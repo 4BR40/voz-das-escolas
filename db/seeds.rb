@@ -6,4 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Teste pull request FLVR
+require 'csv'
+School.destroy_all
+
+filepath = Rails.root.join('lib', 'datasets', 'escolas.csv')
+csv_options = { col_sep: ';', quote_char: '"', headers: :first_row, encoding: 'UTF-8' }
+
+CSV.foreach(filepath, csv_options) do |row|
+  School.create!(
+    id: row['Código INEP'],
+    name: row['Escola'],
+    address: row['Endereço'],
+    city: row['Município'],
+    state: row['UF'],
+    location: row['Localização'],
+    lat: row['Latitude'],
+    lng: row['Longitude']
+  )
+end
+
+
