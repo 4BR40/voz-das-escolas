@@ -1,7 +1,6 @@
 require "open-uri"
 User.destroy_all
 
-
 require 'csv'
 School.destroy_all
 
@@ -21,8 +20,6 @@ CSV.foreach(filepath, csv_options) do |row|
   )
 end
 
-
-
 file = URI.open('https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200')
 usr1 = User.create!(
   email: 'ana@def.com',
@@ -31,3 +28,6 @@ usr1 = User.create!(
   role: 'student'
 )
 usr1.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+Category.create(name: 'Merenda', accept_problem: true)
+Category.create(name: 'Infraestrutura', accept_problem: true)

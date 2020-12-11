@@ -1,16 +1,17 @@
 // Specific CSS for your home-page
-body {
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 16px;
+}
+
+.background-home {
   background-image: url('home-background-image.png'), linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
   background-size: cover;
   text-shadow: 1px 1px 3px rgba(0,0,0,1);
   color: white;
   height: 100vh;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
 }
 
 .align-center {
@@ -22,11 +23,12 @@ body {
 }
 
 .app-name {
-  padding-bottom: 64px;
+  padding-bottom: 80px;
 }
 
 .app-slogan {
   padding-bottom: 160px;
+  text-align: center;
 }
 
 .link-escola {
