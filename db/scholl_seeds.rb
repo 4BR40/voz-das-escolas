@@ -1,6 +1,10 @@
-require "open-uri"
-User.destroy_all
-
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
 
 require 'csv'
 School.destroy_all
@@ -22,12 +26,3 @@ CSV.foreach(filepath, csv_options) do |row|
 end
 
 
-
-file = URI.open('https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200')
-usr1 = User.create!(
-  email: 'ana@def.com',
-  password: '123456',
-  name: 'Ana',
-  role: 'student'
-)
-usr1.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
