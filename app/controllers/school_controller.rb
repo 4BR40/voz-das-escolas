@@ -1,4 +1,4 @@
-class SchoolController < ApplicationController
+class SchoolsController < ApplicationController
   # skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_school, only: %i[show edit update destroy]
 
