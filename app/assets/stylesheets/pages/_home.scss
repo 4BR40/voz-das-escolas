@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+body {
+  background-image: url('brooke-cagle--uHVRvDr7pg-unsplash.jpg');
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  padding: 16px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-center {
+  align-self: center;
+}
