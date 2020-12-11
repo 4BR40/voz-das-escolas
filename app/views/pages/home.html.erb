@@ -1,12 +1,16 @@
 <div class="flex-container mt-5">
-  <div class="flex-item align-center">
+  <div class="flex-item align-center app-name">
     <h1>Voz das escolas</h1>
   </div>
-  <div class="flex-item">
-    <p>Compartilhe os problemas da sua escola! Agora sua voz será ouvida.</p>
+  <div class="flex-item app-slogan">
+    <h5>Compartilhe os problemas da sua escola! Agora sua voz será ouvida.</h5>
   </div>
   <div class="flex-item align-center">
     <%= link_to "Informe um problema", '#', class: "btn btn-info btn-lg" %>
+  </div>
+  <br>
+  <div class="flex-item align-center">
+    <%= link_to "Veja os problemas da sua escola", new_user_session_path, class: "link-escola" %>
   </div>
 </div>
 

@@ -1,7 +1,8 @@
 // Specific CSS for your home-page
 body {
-  background-image: url('brooke-cagle--uHVRvDr7pg-unsplash.jpg');
+  background-image: url('home-background-image.png'), linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
   background-size: cover;
+  text-shadow: 1px 1px 3px rgba(0,0,0,1);
   color: white;
   height: 100vh;
 }
@@ -17,5 +18,17 @@ body {
 }
 
 .btn-info {
+  color: white;
+}
+
+.app-name {
+  padding-bottom: 64px;
+}
+
+.app-slogan {
+  padding-bottom: 160px;
+}
+
+.link-escola {
   color: white;
 }
