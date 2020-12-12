@@ -24,7 +24,7 @@
                   <p>🟠 Pendente </p>
               <% end %>
               <div class="d-flex justify-content-between">
-                <p>💬 <%= @report.user.name %></p>
+                <p>💬 <strong><%= @report.user.name %></strong></p>
                 <% if (Date.today.day - @report.created_at.day) == 0 %>
                   <p>🕒 Hoje </p>
                 <% elsif (Date.today.day - @report.created_at.day) == 1 %>
@@ -33,8 +33,29 @@
                   <p>🕒 Há <%= (Date.today.day - @report.created_at.day) %> dias</p>
                 <% end %>
               </div>
-              <p class="card-text" style="width: 17rem;"><em><%= @report.description %></em></p>
+              <p class="card-text" style="width: 17rem;"><%= @report.description %></p>
               <h6><strong>Comentários:</strong></h6>
+              <ul class="list-group">
+                <% @report.reviews.each do |review| %>
+                  <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                      <strong>💬 <%= review.user.name %></strong>
+                      <% if (Date.today.day - review.created_at.day) == 0 %>
+                        <p>🕒 Hoje </p>
+                      <% elsif (Date.today.day - review.created_at.day) == 1 %>
+                        <p>🕒 Ontem </p>
+                      <% else %>
+                        <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
+                      <% end %>
+                    </div>
+                    <em><%= review.comment %></em>
+                  </li>
+                <% end %>
+                <%= simple_form_for([ @report, @review ], remote: true) do |f| %>
+                  <%= f.input :comment %>
+                  <%= f.submit "Comentar", class: "btn btn-success" %>
+                <% end %>
+              </ul>
             </div>
           </div>
         <% end %>
