@@ -28,9 +28,9 @@
                   <div class="d-flex justify-content-between">
                     <p>💬 <%= report.user.name %></p>
                     <% if (Date.today.day - report.created_at.day) == 0 %>
-                      <p>🕒 Hoje</p>
+                      <p>🕒 Hoje </p>
                     <% elsif (Date.today.day - report.created_at.day) == 1 %>
-                      <p>🕒 Há 1 dia</p>
+                      <p>🕒 Ontem </p>
                     <% else %>
                       <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
                     <% end %>
