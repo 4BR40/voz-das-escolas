@@ -69,31 +69,134 @@ rep = Report.create!(
   description: 'A janela da sala do setimo ano A está quebrada e pode causar acidente.',
   category_id: infra.id,
   school_id: School.last,
-  user_id: usr1 
+  user_id: usr1.id
 )
 rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
+file = URI.open('http://3.bp.blogspot.com/-6xEiZfyOF7g/VbTTlQGAOfI/AAAAAAAAAqQ/ZgJOtGxR_Ms/s1600/tiolet3.jpg')
+file1 = URI.open('http://2.bp.blogspot.com/-IsG_Z8RocNM/VbTYhnMi3eI/AAAAAAAAAqw/ZWd-KhtO_-c/s1600/tiolet6.jpeg')
+file2 = URI.open('https://www.sbnoticias.com.br/tickers/imagens/7fa42ea0769d3bf6406a952c0b033f74.jpg')
+file3 = URI.open('http://sbnoticias.com.br/tickers/midia/b8f71e535a16f5d0349699b616d8b91b.jpg')
 rep = Report.create!(
-  description: '',
-  category_id: ,
-  school_id: ,
-  user_id:
+  description: 'Os banheiros estão sujos e sempre falta papel higiênnico.',
+  category_id: manut.id,
+  school_id: School.last,
+  user_id: usr1.id
 )
+rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+rep.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+rep.photo.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
+rep.photo.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
+
+file = URI.open('https://3.bp.blogspot.com/-ADarM8Erchk/WOQtAp6fpFI/AAAAAAAAIX4/Ai1-1FNbRBwm09OzUoO0WvuuoLvE6q5iwCLcB/s640/17523338_290181211403839_6191663590102813870_n.jpg')
+file1 = URI.open('https://3.bp.blogspot.com/-RO5vmglZO50/Vikou3shvUI/AAAAAAAAAEg/Q7Lj8Tolv_k/s1600/Merenda%2Bescolar.jpg')
+file2 = URI.open('https://4.bp.blogspot.com/-cFuYMNpoB_Q/WOQtoKNt2yI/AAAAAAAAIYE/5i4X2EfHDHIzLLvsldZWIVBinyUDcOiBgCLcB/s640/17796396_290181244737169_2632645363094477056_n%2B%25281%2529.jpg')
 rep = Report.create!(
-  description: '',
-  category_id: ,
-  school_id: ,
-  user_id:
+  description: 'A merenda está uma vergonha. Vejam as fotos',
+  category_id: merenda.id,
+  school_id: School.last,
+  user_id: usr2.id
 )
+rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+rep.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+rep.photo.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
+
+# file = URI.open('')
+# file = URI.open('')
 rep = Report.create!(
-  description: '',
-  category_id: ,
-  school_id: ,
-  user_id:
+  description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  category_id: ensino.id,
+  school_id: School.last,
+  user_id: usr4.id
 )
+# rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+# file = URI.open('')
 rep = Report.create!(
-  description: '',
-  category_id: ,
-  school_id: ,
-  user_id:
+  description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  category_id: ensino.id,
+  school_id: School.last,
+  user_id: usr1.id
+)
+# rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+# file = URI.open('')
+
+# reports
+Report.create!(
+  user_id: usr3.id,
+  school_id: School.first,
+  category_id: aulas.id,
+  description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: usr2,
+  school_id: 53_000_200,
+  category_id: 2,
+  description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 2,
+  school_id: 53_000_200,
+  category_id: 3,
+  description: 'Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 3,
+  school_id: 53_000_200,
+  category_id: 1,
+  description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 3,
+  school_id: 53_000_200,
+  category_id: 2,
+  description: 'Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 1,
+  school_id: 53_068_238,
+  category_id: 1,
+  description: 'Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 1,
+  school_id: 53_068_238,
+  category_id: 2,
+  description: 'Vide electram sadipscing et per. Nullam volutpat nec leo commodo, ut interdum diam laoreet.
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 1,
+  school_id: 53_068_238,
+  category_id: 3,
+  description: 'Nullam volutpat nec leo commodo, ut interdum diam laoreet. Vide electram sadipscing et per.
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 4,
+  school_id: 53_068_238,
+  category_id: 2,
+  description: 'Quem num gosta di mé,
+                boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
+                risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
+)
+Report.create!(
+  user_id: 4,
+  school_id: 53_068_238,
+  category_id: 1,
+  description: 'Nullam volutpatrisus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
