@@ -28,6 +28,3 @@ usr1 = User.create!(
   role: 'student'
 )
 usr1.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-
-Category.create(name: 'Merenda', accept_problem: true)
-Category.create(name: 'Infraestrutura', accept_problem: true)
