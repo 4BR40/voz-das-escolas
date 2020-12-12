@@ -6,11 +6,14 @@
     <h5>Compartilhe os problemas da sua escola! Agora sua voz será ouvida.</h5>
   </div>
   <div class="flex-item align-center">
-    <%= link_to "Informe um problema", '#', class: "btn btn-info btn-lg" %>
+    <%= link_to "Informe um problema", '#', class: "btn btn-info" %>
   </div>
-  <br>
   <div class="flex-item align-center">
-    <%= link_to "Veja os problemas da sua escola", new_user_session_path, class: "link-escola" %>
+    <% if user_signed_in? %>
+      <%= link_to "Veja os problemas da sua escola", school_reports_path(current_user.school_id), class: "link-escola" %>
+    <% else %>
+      <%= link_to "Veja os problemas da sua escola", new_user_session_path, class: "link-escola" %>
+    <% end %>
   </div>
 </div>
 
