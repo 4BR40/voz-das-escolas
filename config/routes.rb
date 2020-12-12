@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :schools do
-    resources :reports do
+  resources :schools, shallow: true do
+    resources :reports, shallow: true do
       resources :reviews
     end
   end

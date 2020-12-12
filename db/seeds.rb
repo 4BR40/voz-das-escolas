@@ -21,14 +21,26 @@ CSV.foreach(filepath, csv_options) do |row|
   )
 end
 
+# users
 file = URI.open('https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200')
 usr1 = User.create!(
   email: 'ana@def.com',
   password: '123456',
   name: 'Ana',
-  role: 'student'
+  role: 'student',
+  school_id: School.last
 )
 usr1.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+file = URI.open('https://images.pexels.com/photos/35065/homeless-man-color-poverty.jpg?auto=compress&cs=tinysrgb&dpr=2&h=250')
+usr4 = User.create!(
+  email: 'joao@def.com',
+  password: '123456',
+  name: 'João',
+  role: 'student',
+  school_id: School.last
+)
+usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 file = URI.open('https://images.pexels.com/photos/1484576/pexels-photo-1484576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=200')
 usr2 = User.create!(
