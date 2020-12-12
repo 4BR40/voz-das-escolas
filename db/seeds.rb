@@ -1,7 +1,6 @@
 require "open-uri"
 User.destroy_all
 
-
 require 'csv'
 School.destroy_all
 
@@ -20,8 +19,6 @@ CSV.foreach(filepath, csv_options) do |row|
     lng: row['Longitude']
   )
 end
-
-
 
 file = URI.open('https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200')
 usr1 = User.create!(

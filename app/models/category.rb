@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
-  belongs_to :category
+  has_many :categories
+  has_many :reports
   has_one_attached :photo
 end
