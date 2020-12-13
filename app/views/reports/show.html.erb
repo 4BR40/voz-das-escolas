@@ -40,21 +40,27 @@
                   <li class="list-group-item">
                     <div class="d-flex justify-content-between">
                       <strong>💬 <%= review.user.name %></strong>
-                      <% if (Date.today.day - review.created_at.day) == 0 %>
-                        <p>🕒 Hoje </p>
+                      <% if (Date.today.day - review.created_at.day) > 1 %>
+                        <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
                       <% elsif (Date.today.day - review.created_at.day) == 1 %>
                         <p>🕒 Ontem </p>
                       <% else %>
-                        <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
+                        <p>🕒 Hoje </p>
                       <% end %>
                     </div>
                     <em><%= review.comment %></em>
                   </li>
                 <% end %>
-                <%= simple_form_for([ @report, @review ], remote: true) do |f| %>
-                  <%= f.input :comment %>
-                  <%= f.submit "Comentar", class: "btn btn-success" %>
-                <% end %>
+                <div>
+                  <%= simple_form_for [@report, @review] do |f| %>
+                    <div class="form-list">
+                      <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                    </div>
+                    <div align="center">
+                      <%= f.submit "Comentar", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                </div>
               </ul>
             </div>
           </div>

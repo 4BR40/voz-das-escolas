@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   private

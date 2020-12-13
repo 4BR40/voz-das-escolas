@@ -27,12 +27,12 @@
                   <% end %>
                   <div class="d-flex justify-content-between">
                     <p>💬 <strong><%= report.user.name %></strong></p>
-                    <% if (Date.today.day - report.created_at.day) == 0 %>
-                      <p>🕒 Hoje </p>
+                    <% if (Date.today.day - report.created_at.day) > 1 %>
+                      <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
                     <% elsif (Date.today.day - report.created_at.day) == 1 %>
                       <p>🕒 Ontem </p>
                     <% else %>
-                      <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
+                      <p>🕒 Hoje </p>
                     <% end %>
                   </div>
                   <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
