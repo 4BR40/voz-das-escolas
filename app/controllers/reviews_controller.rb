@@ -26,6 +26,8 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @report = @review.report
+    render 'reports/show'
   end
 
   def destroy

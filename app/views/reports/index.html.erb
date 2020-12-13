@@ -9,65 +9,34 @@
       <div>
         <% @reports.each do |report| %>
           <% if current_user.school == report.school %>
-            <div class="card" style="width: 19rem; margin-bottom: 24px;">
-              <% if current_user == report.user%>
-                <%= link_to edit_report_path(report) do %>
-                  <% if report.photos.attached?  %>
-                    <%= cl_image_path report.photo.key, class: card-img-top %>
-                  <% else %>
-                    <img class="card-img-top" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-                  <% end %>
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
-                    </div>
-                    <% if report.solved? %>
-                        <p>🟢 Resolvido </p>
-                      <% else %>
-                        <p>🟠 Pendente </p>
-                    <% end %>
-                    <div class="d-flex justify-content-between">
-                      <p>💬 <strong><%= report.user.name %></strong></p>
-                      <% if (Date.today.day - report.created_at.day) > 1 %>
-                        <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
-                      <% elsif (Date.today.day - report.created_at.day) == 1 %>
-                        <p>🕒 Ontem </p>
-                      <% else %>
-                        <p>🕒 Hoje </p>
-                      <% end %>
-                    </div>
-                    <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
-                  </div>
+            <div class="card" style="width: 19rem; margin-bottom: 24px;"> 
+              <%= link_to report_path(report) do %>
+                <% if report.photos.attached?  %>
+                  <%= cl_image_path report.photo.key, class: card-img-top %>
+                <% else %>
+                  <img class="card-img-top" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
                 <% end %>
-              <% else %>
-                <%= link_to report_path(report) do %>
-                  <% if report.photos.attached?  %>
-                    <%= cl_image_path report.photo.key, class: card-img-top %>
-                  <% else %>
-                    <img class="card-img-top" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-                  <% end %>
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
-                    </div>
-                    <% if report.solved? %>
-                        <p>🟢 Resolvido </p>
-                      <% else %>
-                        <p>🟠 Pendente </p>
-                    <% end %>
-                    <div class="d-flex justify-content-between">
-                      <p>💬 <strong><%= report.user.name %></strong></p>
-                      <% if (Date.today.day - report.created_at.day) > 1 %>
-                        <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
-                      <% elsif (Date.today.day - report.created_at.day) == 1 %>
-                        <p>🕒 Ontem </p>
-                      <% else %>
-                        <p>🕒 Hoje </p>
-                      <% end %>
-                    </div>
-                    <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
                   </div>
-                <% end %>
+                  <% if report.solved? %>
+                      <p>🟢 Resolvido </p>
+                    <% else %>
+                      <p>🟠 Pendente </p>
+                  <% end %>
+                  <div class="d-flex justify-content-between">
+                    <p>💬 <strong><%= report.user.name %></strong></p>
+                    <% if (Date.today.day - report.created_at.day) > 1 %>
+                      <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
+                    <% elsif (Date.today.day - report.created_at.day) == 1 %>
+                      <p>🕒 Ontem </p>
+                    <% else %>
+                      <p>🕒 Hoje </p>
+                    <% end %>
+                  </div>
+                  <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
+                </div>
               <% end %>
             </div>
           <% end %>
@@ -79,7 +48,7 @@
   <br>
 
   <div class="align-center">
-    <%= link_to "Informe um problema", '#', class: "btn btn-info" %>
+    <%= link_to "Informe um problema", new_school_report_path, class: "btn btn-info" %>
   </div>
 
 </div>

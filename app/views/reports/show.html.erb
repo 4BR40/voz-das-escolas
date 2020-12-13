@@ -17,11 +17,12 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <h4 class="card-text" style="width: 17rem"><strong><%= @report.category.name %></strong></h4>
+                <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_report_path(@report) if current_user == @report.user %>
               </div>
               <% if @report.solved? %>
-                  <p>🟢 Resolvido </p>
-                <% else %>
-                  <p>🟠 Pendente </p>
+                <p>🟢 Resolvido </p>
+              <% else %>
+                <p>🟠 Pendente </p>
               <% end %>
               <div class="d-flex justify-content-between">
                 <p>💬 <strong><%= @report.user.name %></strong></p>
@@ -50,8 +51,10 @@
                         <% end %>
                       </div>
                       <em><%= review.comment %></em>
-                      <%= link_to '<i class="fas fa-trash"></i>'.html_safe, review_path(review), method: :delete %>
-                      <%= link_to '<i class="fas fa-edit"></i>'.html_safe, report_path(review.report_id) %>
+                      <div class="d-flex justify-content-around" style="font-size: 8px;">
+                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete %>
+                        <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_review_path(review) %>
+                      </div>
                     </li>
                   <% else %>
                     <li class="list-group-item">
@@ -70,13 +73,24 @@
                   <% end %>
                 <% end %>
                 <div>
-                  <%= simple_form_for [@report, @review] do |f| %>
-                    <div class="form-list">
-                      <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
-                    </div>
-                    <div align="center">
-                      <%= f.submit "Comentar", class: "btn btn-primary" %>
-                    </div>
+                  <% if @review.new_record? %>
+                    <%= simple_form_for [@report, @review] do |f| %>
+                      <div class="form-list">
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                      </div>
+                      <div align="center">
+                        <%= f.submit "Comentar", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= simple_form_for @review, url: review_path(@review), html: {method: "patch"} do |f| %>
+                      <div class="form-list">
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                      </div>
+                      <div align="center">
+                        <%= f.submit "Comentar", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
                   <% end %>
                 </div>
               </ul>
@@ -90,6 +104,6 @@
   <br>
 
   <div class="align-center">
-    <%= link_to "Informe um problema", '#', class: "btn btn-info" %>
+    <%= link_to "Informe um problema", new_school_report_path(@report.school_id), class: "btn btn-info" %>
   </div>
 </div>
