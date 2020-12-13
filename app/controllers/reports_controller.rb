@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new]
+  before_action :set_report, only: %i[show]
+
 
   def new
     @report = Report.new
@@ -27,19 +29,16 @@ class ReportsController < ApplicationController
   end
 
   def index
+    @reports = Report.all
   end
 
   def show
   end
-
-   private
+  
+  private
 
   def set_report
     @report = Report.find(params[:id])
-    authorize @report
-  end
 
-  def report_params
-    params.require(:report).permit(:description, :photo)
   end
 end
