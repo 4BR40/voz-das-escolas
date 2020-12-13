@@ -37,19 +37,37 @@
               <h6><strong>Comentários:</strong></h6>
               <ul class="list-group">
                 <% @report.reviews.each do |review| %>
-                  <li class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                      <strong>💬 <%= review.user.name %></strong>
-                      <% if (Date.today.day - review.created_at.day) > 1 %>
-                        <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
-                      <% elsif (Date.today.day - review.created_at.day) == 1 %>
-                        <p>🕒 Ontem </p>
-                      <% else %>
-                        <p>🕒 Hoje </p>
-                      <% end %>
-                    </div>
-                    <em><%= review.comment %></em>
-                  </li>
+                  <% if current_user == review.user %>  
+                    <li class="list-group-item">
+                      <div class="d-flex justify-content-between">
+                        <strong>💬 <%= review.user.name %></strong>
+                        <% if (Date.today.day - review.created_at.day) > 1 %>
+                          <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
+                        <% elsif (Date.today.day - review.created_at.day) == 1 %>
+                          <p>🕒 Ontem </p>
+                        <% else %>
+                          <p>🕒 Hoje </p>
+                        <% end %>
+                      </div>
+                      <em><%= review.comment %></em>
+                      <%= link_to '<i class="fas fa-trash"></i>'.html_safe, review_path(review), method: :delete %>
+                      <%= link_to '<i class="fas fa-edit"></i>'.html_safe, report_path(review.report_id) %>
+                    </li>
+                  <% else %>
+                    <li class="list-group-item">
+                      <div class="d-flex justify-content-between">
+                        <strong>💬 <%= review.user.name %></strong>
+                        <% if (Date.today.day - review.created_at.day) > 1 %>
+                          <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
+                        <% elsif (Date.today.day - review.created_at.day) == 1 %>
+                          <p>🕒 Ontem </p>
+                        <% else %>
+                          <p>🕒 Hoje </p>
+                        <% end %>
+                      </div>
+                      <em><%= review.comment %></em>
+                    </li>
+                  <% end %>
                 <% end %>
                 <div>
                   <%= simple_form_for [@report, @review] do |f| %>
