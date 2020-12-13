@@ -9,7 +9,7 @@
       <div>
         <% @reports.each do |report| %>
           <% if current_user.school == report.school %>
-            <div class="card" style="width: 19rem; margin-bottom: 24px;">
+            <div class="card" style="width: 19rem; margin-bottom: 24px;"> 
               <%= link_to report_path(report) do %>
                 <% if report.photos.attached?  %>
                   <%= cl_image_path report.photo.key, class: card-img-top %>
@@ -48,7 +48,7 @@
   <br>
 
   <div class="align-center">
-    <%= link_to "Informe um problema", '#', class: "btn btn-info" %>
+    <%= link_to "Informe um problema", new_school_report_path, class: "btn btn-info" %>
   </div>
 
 </div>
