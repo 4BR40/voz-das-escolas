@@ -24,20 +24,28 @@
                   <div class="d-flex justify-content-between">
                     <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
                   </div>
-                  <% if report.solved? %>
-                      <p>🟢 Resolvido </p>
-                    <% else %>
-                      <p>🟠 Pendente </p>
-                  <% end %>
+                  <div style="display:inline-block;" class="d-flex justify-content-between">
+                    <div>
+                      <% if report.solved? %>
+                          <p>🟢 Resolvido </p>
+                        <% else %>
+                          <p>🟠 Pendente </p>
+                      <% end %>
+                    </div>
+                    <div class="d-flex justify-content-between upvote-downvote">
+                      <%= link_to dislike_report_path(report), method: :put, remote: :true do %>
+                        <strong><%= report.get_downvotes.size %></strong>
+                        👎
+                      <% end %>
+                      <%= link_to like_report_path(report), method: :put, remote: :true do %>
+                        👍
+                        <strong><%= report.get_upvotes.size %></strong>
+                      <% end %>
+                    </div>
+                  </div>
                   <div class="d-flex justify-content-between">
                     <p>💬 <strong><%= report.user.name %></strong></p>
-                    <% if (Date.today.day - report.created_at.day) > 1 %>
-                      <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
-                    <% elsif (Date.today.day - report.created_at.day) == 1 %>
-                      <p>🕒 Ontem </p>
-                    <% else %>
-                      <p>🕒 Hoje </p>
-                    <% end %>
+                    <p> 🕒 Há <%= time_ago_in_words(report.created_at) %></p>
                   </div>
                   <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
                 </div>

@@ -24,6 +24,9 @@ gem 'redis', '~> 4.0'
 # Images
 gem 'cloudinary', '~> 1.16.0'
 
+# Gem for implement upvote/downvote functionality
+gem 'acts_as_votable'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
