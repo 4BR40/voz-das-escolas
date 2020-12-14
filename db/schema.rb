@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_170958) do
+ActiveRecord::Schema.define(version: 2020_12_12_213310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 2020_12_11_170958) do
     t.integer "rating"
     t.text "comment"
     t.bigint "user_id", null: false
-    t.bigint "problem_id", null: false
+    t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["problem_id"], name: "index_reviews_on_problem_id"
+    t.index ["report_id"], name: "index_reviews_on_report_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_170958) do
   add_foreign_key "reports", "categories"
   add_foreign_key "reports", "schools"
   add_foreign_key "reports", "users"
-  add_foreign_key "reviews", "reports", column: "problem_id"
+  add_foreign_key "reviews", "reports"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "schools"
 end

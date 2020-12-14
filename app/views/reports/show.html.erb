@@ -17,14 +17,15 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <h4 class="card-text" style="width: 17rem"><strong><%= @report.category.name %></strong></h4>
+                <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_report_path(@report) if current_user == @report.user %>
               </div>
               <% if @report.solved? %>
-                  <p>🟢 Resolvido </p>
-                <% else %>
-                  <p>🟠 Pendente </p>
+                <p>🟢 Resolvido </p>
+              <% else %>
+                <p>🟠 Pendente </p>
               <% end %>
               <div class="d-flex justify-content-between">
-                <p>💬 <%= @report.user.name %></p>
+                <p>💬 <strong><%= @report.user.name %></strong></p>
                 <% if (Date.today.day - @report.created_at.day) == 0 %>
                   <p>🕒 Hoje </p>
                 <% elsif (Date.today.day - @report.created_at.day) == 1 %>
@@ -33,8 +34,66 @@
                   <p>🕒 Há <%= (Date.today.day - @report.created_at.day) %> dias</p>
                 <% end %>
               </div>
-              <p class="card-text" style="width: 17rem;"><em><%= @report.description %></em></p>
+              <p class="card-text" style="width: 17rem;"><%= @report.description %></p>
               <h6><strong>Comentários:</strong></h6>
+              <ul class="list-group">
+                <% @report.reviews.each do |review| %>
+                  <% if current_user == review.user %>  
+                    <li class="list-group-item">
+                      <div class="d-flex justify-content-between">
+                        <strong>💬 <%= review.user.name %></strong>
+                        <% if (Date.today.day - review.created_at.day) > 1 %>
+                          <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
+                        <% elsif (Date.today.day - review.created_at.day) == 1 %>
+                          <p>🕒 Ontem </p>
+                        <% else %>
+                          <p>🕒 Hoje </p>
+                        <% end %>
+                      </div>
+                      <em><%= review.comment %></em>
+                      <div class="d-flex justify-content-around" style="font-size: 8px;">
+                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete %>
+                        <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_review_path(review) %>
+                      </div>
+                    </li>
+                  <% else %>
+                    <li class="list-group-item">
+                      <div class="d-flex justify-content-between">
+                        <strong>💬 <%= review.user.name %></strong>
+                        <% if (Date.today.day - review.created_at.day) > 1 %>
+                          <p>🕒 Há <%= (Date.today.day - review.created_at.day) %> dias</p>
+                        <% elsif (Date.today.day - review.created_at.day) == 1 %>
+                          <p>🕒 Ontem </p>
+                        <% else %>
+                          <p>🕒 Hoje </p>
+                        <% end %>
+                      </div>
+                      <em><%= review.comment %></em>
+                    </li>
+                  <% end %>
+                <% end %>
+                <div>
+                  <% if @review.new_record? %>
+                    <%= simple_form_for [@report, @review] do |f| %>
+                      <div class="form-list">
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                      </div>
+                      <div align="center">
+                        <%= f.submit "Comentar", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= simple_form_for @review, url: review_path(@review), html: {method: "patch"} do |f| %>
+                      <div class="form-list">
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                      </div>
+                      <div align="center">
+                        <%= f.submit "Comentar", class: "btn btn-primary" %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </ul>
             </div>
           </div>
         <% end %>
@@ -45,6 +104,6 @@
   <br>
 
   <div class="align-center">
-    <%= link_to "Informe um problema", '#', class: "btn btn-info" %>
+    <%= link_to "Informe um problema", new_school_report_path(@report.school_id), class: "btn btn-info" %>
   </div>
 </div>
