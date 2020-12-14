@@ -7,4 +7,5 @@ class User < ApplicationRecord
   belongs_to :school
   has_many :reports
   has_many :reviews
+  acts_as_voter
 end
