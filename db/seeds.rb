@@ -1,9 +1,9 @@
 require "open-uri"
-User.destroy_all
-Category.destroy_all
-
 require 'csv'
+Report.destroy_all
+User.destroy_all
 School.destroy_all
+Category.destroy_all
 
 filepath = Rails.root.join('lib', 'datasets', 'escolas.csv')
 csv_options = { col_sep: ';', quote_char: '"', headers: :first_row, encoding: 'UTF-8' }
@@ -28,26 +28,17 @@ usr1 = User.create!(
   password: '123456',
   name: 'Ana',
   role: 'student',
-  school_id: School.last
+  school_id: School.last.id
 )
 usr1.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-
-file = URI.open('https://images.pexels.com/photos/35065/homeless-man-color-poverty.jpg?auto=compress&cs=tinysrgb&dpr=2&h=250')
-usr4 = User.create!(
-  email: 'joao@def.com',
-  password: '123456',
-  name: 'João',
-  role: 'student',
-  school_id: School.last
-)
-usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 file = URI.open('https://images.pexels.com/photos/1484576/pexels-photo-1484576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=200')
 usr2 = User.create!(
   email: 'ze@def.com',
   password: '123456',
   name: 'Zé',
-  role: 'student'
+  role: 'student',
+  school_id: School.last.id
 )
 usr2.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -56,7 +47,8 @@ usr3 = User.create!(
   email: 'maria@def.com',
   password: '123456',
   name: 'Maria',
-  role: 'student'
+  role: 'student',
+  school_id: School.last.id
 )
 usr3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -65,7 +57,8 @@ usr4 = User.create!(
   email: 'joao@def.com',
   password: '123456',
   name: 'João',
-  role: 'student'
+  role: 'student',
+  school_id: School.last.id
 )
 usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -80,10 +73,10 @@ file = URI.open('https://www.gazetavg.com.br/wp-content/uploads/2020/03/janela-q
 rep = Report.create!(
   description: 'A janela da sala do setimo ano A está quebrada e pode causar acidente.',
   category_id: infra.id,
-  school_id: School.last,
+  school_id: School.last.id,
   user_id: usr1.id
 )
-rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 file = URI.open('http://3.bp.blogspot.com/-6xEiZfyOF7g/VbTTlQGAOfI/AAAAAAAAAqQ/ZgJOtGxR_Ms/s1600/tiolet3.jpg')
 file1 = URI.open('http://2.bp.blogspot.com/-IsG_Z8RocNM/VbTYhnMi3eI/AAAAAAAAAqw/ZWd-KhtO_-c/s1600/tiolet6.jpeg')
@@ -92,13 +85,13 @@ file3 = URI.open('http://sbnoticias.com.br/tickers/midia/b8f71e535a16f5d0349699b
 rep = Report.create!(
   description: 'Os banheiros estão sujos e sempre falta papel higiênnico.',
   category_id: manut.id,
-  school_id: School.last,
+  school_id: School.last.id,
   user_id: usr1.id
 )
-rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-rep.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
-rep.photo.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
-rep.photo.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 
 file = URI.open('https://3.bp.blogspot.com/-ADarM8Erchk/WOQtAp6fpFI/AAAAAAAAIX4/Ai1-1FNbRBwm09OzUoO0WvuuoLvE6q5iwCLcB/s640/17523338_290181211403839_6191663590102813870_n.jpg')
 file1 = URI.open('https://3.bp.blogspot.com/-RO5vmglZO50/Vikou3shvUI/AAAAAAAAAEg/Q7Lj8Tolv_k/s1600/Merenda%2Bescolar.jpg')
@@ -106,32 +99,32 @@ file2 = URI.open('https://4.bp.blogspot.com/-cFuYMNpoB_Q/WOQtoKNt2yI/AAAAAAAAIYE
 rep = Report.create!(
   description: 'A merenda está uma vergonha. Vejam as fotos',
   category_id: merenda.id,
-  school_id: School.last,
+  school_id: School.last.id,
   user_id: usr2.id
 )
-rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-rep.photo.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
-rep.photo.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png')
+rep.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 
 # file = URI.open('')
 # file = URI.open('')
-rep = Report.create!(
+rep1 = Report.create!(
   description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
   category_id: ensino.id,
-  school_id: School.last,
+  school_id: School.last.id,
   user_id: usr4.id
 )
 # rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 # file = URI.open('')
-rep = Report.create!(
+rep2 = Report.create!(
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
   category_id: ensino.id,
-  school_id: School.last,
+  school_id: School.last.id,
   user_id: usr1.id
 )
 # rep.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -140,75 +133,75 @@ rep = Report.create!(
 # reports
 Report.create!(
   user_id: usr3.id,
-  school_id: School.first,
+  school_id: School.first.id,
   category_id: aulas.id,
   description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: usr2,
-  school_id: 53_000_200,
-  category_id: 2,
+  user_id: usr4.id,
+  school_id: School.first.id,
+  category_id: violencia.id,
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 2,
-  school_id: 53_000_200,
-  category_id: 3,
+  user_id: usr1.id,
+  school_id: School.first.id,
+  category_id: violencia.id,
   description: 'Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 3,
-  school_id: 53_000_200,
-  category_id: 1,
+  user_id: usr4.id,
+  school_id: School.last.id,
+  category_id: violencia.id,
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 3,
-  school_id: 53_000_200,
-  category_id: 2,
+  user_id: usr1.id,
+  school_id: School.last.id,
+  category_id: violencia.id,
   description: 'Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 1,
-  school_id: 53_068_238,
-  category_id: 1,
+  user_id: usr2.id,
+  school_id: School.last.id,
+  category_id: violencia.id,
   description: 'Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 1,
-  school_id: 53_068_238,
-  category_id: 2,
+  user_id: usr3.id,
+  school_id: School.last.id,
+  category_id: aulas.id,
   description: 'Vide electram sadipscing et per. Nullam volutpat nec leo commodo, ut interdum diam laoreet.
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 1,
-  school_id: 53_068_238,
-  category_id: 3,
+  user_id: usr2.id,
+  school_id: School.last.id,
+  category_id: aulas.id,
   description: 'Nullam volutpat nec leo commodo, ut interdum diam laoreet. Vide electram sadipscing et per.
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 4,
-  school_id: 53_068_238,
-  category_id: 2,
+  user_id: usr4.id,
+  school_id: School.last.id,
+  category_id: aulas.id,
   description: 'Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: 4,
-  school_id: 53_068_238,
-  category_id: 1,
+  user_id: usr2.id,
+  school_id: School.last.id,
+  category_id: aulas.id,
   description: 'Nullam volutpatrisus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
