@@ -6,7 +6,7 @@
     <h5>Compartilhe os problemas da sua escola! Agora sua voz será ouvida.</h5>
   </div>
   <div class="flex-item align-center">
-    <%= link_to "Informe um problema", '#', class: "btn btn-info" %>
+    <%= link_to "Informe um problema", new_report_path, class: "btn btn-info" %>
   </div>
   <div class="flex-item align-center">
     <% if user_signed_in? %>

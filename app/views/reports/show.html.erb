@@ -38,7 +38,7 @@
               <h6><strong>Comentários:</strong></h6>
               <ul class="list-group">
                 <% @report.reviews.each do |review| %>
-                  <% if current_user == review.user %>  
+                  <% if current_user == review.user %>
                     <li class="list-group-item">
                       <div class="d-flex justify-content-between">
                         <strong>💬 <%= review.user.name %></strong>
@@ -100,7 +100,7 @@
       </div>
     </div>
   </div>
-  
+
   <br>
 
   <div class="align-center">

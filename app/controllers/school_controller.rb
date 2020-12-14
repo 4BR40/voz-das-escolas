@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[new]
   before_action :set_school, only: %i[show edit update destroy]
 
   def index

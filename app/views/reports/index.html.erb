@@ -9,7 +9,7 @@
       <div>
         <% @reports.each do |report| %>
           <% if current_user.school == report.school %>
-            <div class="card" style="width: 19rem; margin-bottom: 24px;">              
+            <div class="card" style="width: 19rem; margin-bottom: 24px;">
               <% if report.photos.attached?  %>
                 <% if report.photos.count > 1 %>
                   <%= render 'shared/carousel', photos: report.photos %>
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-  
+
   <br>
 
   <div class="align-center">
