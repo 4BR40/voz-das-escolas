@@ -10,7 +10,11 @@
         <% if current_user.school == @report.school %>
           <div class="card" style="width: 19rem; margin-bottom: 24px;">
             <% if @report.photos.attached?  %>
-              <%= cl_image_path @report.photo.key, class: card-img-top %>
+              <% if @report.photos.count > 1 %>
+                  <%= render 'shared/carousel', photos: @report.photos %>
+                <% else %>
+                  <%=  cl_image_tag @report.photos[0].key, class: "d-block w-100"  %>
+                <% end %>
             <% else %>
               <img class="card-img-top" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
             <% end %>
