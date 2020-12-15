@@ -11,7 +11,7 @@
       <%= simple_form_for @report do |f| %>
         <%= f.input :description, as: :text, label:"Altere a descrição do problema" %>
         <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-        <p>Caso queira alterar a imagem usada, insira uma nova aqui:</p>
+        <p>Caso queira alterar as imagens usadas, insira novas aqui:</p>
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Faça o upload' %>
         <p>Caso queira alterar a categoria do problema, escolha abaixo:</p>
         <%= f.association :category, label: false %>
