@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :reports, only: [:new, :create]
   resources :schools, shallow: true do
     resources :reports, shallow: true do
+      member do
+        put "like", to: "reports#upvote"
+        put "dislike", to: "reports#downvote"
+      end
       resources :reviews
     end
   end
