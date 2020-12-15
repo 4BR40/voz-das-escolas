@@ -4,11 +4,14 @@
       <div class="title justify-content-center">
         <h1><strong>Relatar</strong></h1>
       </div>
-      <%= simple_form_for @report, :url => new_school_report_path do |f| %>
+      <%= simple_form_for @report do |f| %>
         <%= f.input :description, as: :text, label:"1. Descreva o problema resumidamente:" %>
-        <%= f.input :photo, as: :file, label:"2. Se quiser, compartilhe uma ou mais fotos para ilustrar a situação:" %>
-        <img class="preview-img">
-        <% if !nil %>
+        <p>2. Se quiser, compartilhe uma ou mais fotos para ilustrar a situação:</p>
+        <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Faça o upload' %>
+
+       <!-- deixei comentado abaixo um código para criar um preview em carrossel caso consigamos fazer o upload de mais de uma imagem -->
+       <!--  <#% if nil %>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 250px">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -35,11 +38,17 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-          <% else %>
-          <% end %>
-        <p>3. Caso deseje publicar seu relato, marque a opção "público"abaixo</p>
-          <input class="my-class" type="checkbox" name="publico">
-          <label for="subscription">Público</label>
+          <#% else %>
+          <#% end %> -->
+        <%= f.association :category %>
+        <p>3. Caso deseje publicar seu relato, marque a opção "público" abaixo</p>
+          <fieldset class="form-group boolean optional snippet_archived">
+            <div class="form-check">
+              <input name="snippet[archived]" type="hidden" value="0">
+              <input class="form-check-input boolean optional toggle" type="checkbox" value="1" name="snippet[archived]" id="snippet_archived">
+              <label class="form-check-label boolean optional" for="snippet_archived">Público</label>
+            </div>
+          </fieldset>
           <br>
         <%= f.button :submit, class: 'btn btn-warning btn-block' %>
       <% end %>
