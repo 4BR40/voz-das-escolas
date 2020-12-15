@@ -6,6 +6,7 @@
 <br>
 <div class="container">
   <div class="row justify-content-center">
+  <div>
     <% @reports.each do |report| %>
       <% if current_user.school == report.school %>
         <div class="card" style="width: 19rem; margin-bottom: 24px;">              
@@ -53,6 +54,7 @@
         </div>
       <% end %>
     <% end %>
+  </div>
   </div>
 </div>
   
