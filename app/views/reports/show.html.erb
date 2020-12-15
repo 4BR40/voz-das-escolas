@@ -35,13 +35,13 @@
               <p class="card-text" style="width: 17rem;"><%= @report.description %>
                 <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_report_path(@report) if current_user == @report.user %>
               </p>
-                
+
               <div class="d-flex justify-content-end">
               </div>
               <h6><strong>Comentários:</strong></h6>
               <ul class="list-group">
                 <% @report.reviews.each do |review| %>
-                  <% if current_user == review.user %>  
+                  <% if current_user == review.user %>
                     <li class="list-group-item">
                       <div class="d-flex justify-content-between">
                         <strong>💬 <%= review.user.name %></strong>
@@ -91,10 +91,16 @@
       </div>
     </div>
   </div>
-  
+
   <br>
 
-  <div class="align-center">
+  <div class="wrapper">
+    <button type="button" class="btn btn-light" onclick="goBack()">Voltar</button>
+      <script>
+      function goBack() {
+        window.history.back();
+      }
+      </script>
     <%= link_to "Informe um problema", new_school_report_path(@report.school_id), class: "btn btn-info" %>
   </div>
 </div>

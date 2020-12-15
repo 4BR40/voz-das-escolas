@@ -9,7 +9,7 @@
   <div>
     <% @reports.each do |report| %>
       <% if current_user.school == report.school %>
-        <div class="card" style="width: 19rem">              
+        <div class="card" style="width: 19rem">
           <% if report.photos.attached?%>
             <%= link_to report_path(report) do %>
               <% if report.photos.count > 1 %>
@@ -61,7 +61,7 @@
   </div>
   </div>
 </div>
-  
+
 <br>
 
   <div class="align-center">

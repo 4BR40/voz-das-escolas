@@ -1,11 +1,19 @@
 .btn-info {
   color: white;
   border-radius: 8px;
-  margin-bottom: 48px;
-  padding: 8px 24px;
+  margin-bottom: 2px;
+  padding: 8px 16px;
   transition: background 0.3s ease;
 }
 
 .btn-primary {
   border-radius: 4px;
+}
+
+
+.wrapper {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+
 }
