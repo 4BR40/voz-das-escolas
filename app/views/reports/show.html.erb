@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
       <div>
         <% if current_user.school == @report.school %>
-          <div class="card" style="width: 19rem; margin-bottom: 24px;">
+          <div class="card" style="width: 19rem">
             <% if @report.photos.attached?  %>
               <% if @report.photos.count > 1 %>
                   <%= render 'shared/carousel', photos: @report.photos %>
@@ -21,7 +21,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <h4 class="card-text" style="width: 17rem"><strong><%= @report.category.name %></strong></h4>
-                <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_report_path(@report) if current_user == @report.user %>
+                <%=  image_tag( "#{@report.category.name}.png", width: 32, height: 32) if ActionController::Base.helpers.resolve_asset_path("#{@report.category.name}.png") %>
               </div>
               <% if @report.solved? %>
                 <p>🟢 Resolvido </p>
@@ -32,7 +32,12 @@
                 <p>💬 <strong><%= @report.user.name %></strong></p>
                 <p> 🕒 Há <%= time_ago_in_words(@report.created_at) %></p>
               </div>
-              <p class="card-text" style="width: 17rem;"><%= @report.description %></p>
+              <p class="card-text" style="width: 17rem;"><%= @report.description %>
+                <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_report_path(@report) if current_user == @report.user %>
+              </p>
+                
+              <div class="d-flex justify-content-end">
+              </div>
               <h6><strong>Comentários:</strong></h6>
               <ul class="list-group">
                 <% @report.reviews.each do |review| %>
