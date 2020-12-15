@@ -53,5 +53,3 @@ class SchoolsController < ApplicationController
     params.require(:school).permit(:name, :photo)
   end
 end
-
-end
