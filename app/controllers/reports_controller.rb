@@ -1,5 +1,4 @@
 class ReportsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:new]
   before_action :set_report, only: %i[show upvote downvote]
   respond_to :js, :html, :json
@@ -41,25 +40,22 @@ class ReportsController < ApplicationController
   def upvote
     # @report = Report.find(params[:id])
     @report.upvote_by current_user
-    redirect_to school_reports_path(@report.school)
+    redirect_to school_reports_path(@report.school, anchor: "report-#{@report.id}")
   end
 
   def downvote
     # @report = Report.find(params[:id])
     @report.downvote_by current_user
-    redirect_to school_reports_path(@report.school)
+    redirect_to school_reports_path(@report.school, anchor: "report-#{@report.id}")
   end
-
 
   private
 
   def set_report
     @report = Report.find(params[:id])
-
   end
 
   def report_params
     params.require(:report).permit(:description, :category_id, photos: [])
-
   end
 end
