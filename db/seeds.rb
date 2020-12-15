@@ -62,17 +62,23 @@ usr4 = User.create!(
 )
 usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
-infra = Category.create!(name: 'Infraestrutura', accept_problem: true)
-manut = Category.create!(name: 'Manutenção', accept_problem: true)
-merenda = Category.create!(name: 'Merenda', accept_problem: true)
-violencia = Category.create!(name: 'Violência', accept_problem: true)
-ensino = Category.create!(name: 'Ensino', accept_problem: true)
 aulas = Category.create!(name: 'Aulas', accept_problem: true)
+info = Category.create!(name: 'Informática', accept_problem: true)
+merenda = Category.create!(name: 'Merenda', accept_problem: true)
+seguranca = Category.create!(name: 'Segurança', accept_problem: true)
+manut = Category.create!(name: 'Manutenção', accept_problem: true)
+limpeza = Category.create!(name: 'Limpeza', accept_problem: true)
+livros = Category.create!(name: 'Livros', accept_problem: true)
+ventilacao = Category.create!(name: 'Ventilação', accept_problem: true)
+transporte = Category.create!(name: 'Transporte', accept_problem: true)
+esportes = Category.create!(name: 'Esportes', accept_problem: true)
+bullying = Category.create!(name: 'Bullying', accept_problem: true)
+outros = Category.create!(name: 'Outros', accept_problem: true)
 
 file = URI.open('https://www.gazetavg.com.br/wp-content/uploads/2020/03/janela-quebrada-gazeta-mar%C3%A7o-2020-1.jpeg')
 rep = Report.create!(
   description: 'A janela da sala do setimo ano A está quebrada e pode causar acidente.',
-  category_id: infra.id,
+  category_id: manut.id,
   school_id: School.last.id,
   user_id: usr1.id
 )
@@ -84,7 +90,7 @@ file2 = URI.open('https://www.sbnoticias.com.br/tickers/imagens/7fa42ea0769d3bf6
 file3 = URI.open('http://sbnoticias.com.br/tickers/midia/b8f71e535a16f5d0349699b616d8b91b.jpg')
 rep = Report.create!(
   description: 'Os banheiros estão sujos e sempre falta papel higiênnico.',
-  category_id: manut.id,
+  category_id: limpeza.id,
   school_id: School.last.id,
   user_id: usr1.id
 )
@@ -112,7 +118,7 @@ rep1 = Report.create!(
   description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
-  category_id: ensino.id,
+  category_id: aulas.id,
   school_id: School.last.id,
   user_id: usr4.id
 )
@@ -123,7 +129,7 @@ rep2 = Report.create!(
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
-  category_id: ensino.id,
+  category_id: bullying.id,
   school_id: School.last.id,
   user_id: usr1.id
 )
@@ -134,7 +140,7 @@ rep2 = Report.create!(
 Report.create!(
   user_id: usr3.id,
   school_id: School.first.id,
-  category_id: aulas.id,
+  category_id: livros.id,
   description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
@@ -142,7 +148,7 @@ Report.create!(
 Report.create!(
   user_id: usr4.id,
   school_id: School.first.id,
-  category_id: violencia.id,
+  category_id: info.id,
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
@@ -150,7 +156,7 @@ Report.create!(
 Report.create!(
   user_id: usr1.id,
   school_id: School.first.id,
-  category_id: violencia.id,
+  category_id: ventilacao.id,
   description: 'Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
@@ -158,7 +164,7 @@ Report.create!(
 Report.create!(
   user_id: usr4.id,
   school_id: School.last.id,
-  category_id: violencia.id,
+  category_id: seguranca.id,
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
@@ -166,21 +172,21 @@ Report.create!(
 Report.create!(
   user_id: usr1.id,
   school_id: School.last.id,
-  category_id: violencia.id,
+  category_id: seguranca.id,
   description: 'Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
   user_id: usr2.id,
   school_id: School.last.id,
-  category_id: violencia.id,
+  category_id: esportes.id,
   description: 'Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
   user_id: usr3.id,
   school_id: School.last.id,
-  category_id: aulas.id,
+  category_id: outros.id,
   description: 'Vide electram sadipscing et per. Nullam volutpat nec leo commodo, ut interdum diam laoreet.
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
@@ -194,7 +200,7 @@ Report.create!(
 Report.create!(
   user_id: usr4.id,
   school_id: School.last.id,
-  category_id: aulas.id,
+  category_id: outros.id,
   description: 'Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
@@ -202,6 +208,6 @@ Report.create!(
 Report.create!(
   user_id: usr2.id,
   school_id: School.last.id,
-  category_id: aulas.id,
+  category_id: transporte.id,
   description: 'Nullam volutpatrisus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
