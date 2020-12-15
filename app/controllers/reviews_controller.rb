@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review.report = @report
     @review.user = current_user if current_user.school == @report.school
     if @review.save
-      redirect_to report_path(@report)
+      redirect_to report_path(@report, anchor: "review-#{@review.id}")
     else
       render report_path(@report), notice: 'Tente novamente'
     end

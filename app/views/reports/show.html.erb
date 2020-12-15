@@ -45,9 +45,9 @@
                         <strong>💬 <%= review.user.name %></strong>
                         <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
                       </div>
-                      <em><%= review.comment %></em>
+                      <em id="review-<%= review.id %>"><%= review.comment %></em>
                       <div class="d-flex justify-content-around" style="font-size: 8px;">
-                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete %>
+                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete, remote: true, data: { confirm: 'Certeza?'} %>
                         <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_review_path(review) %>
                       </div>
                     </li>
@@ -57,15 +57,15 @@
                         <strong>💬 <%= review.user.name %></strong>
                         <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
                       </div>
-                      <em><%= review.comment %></em>
+                      <em id="review-<%= review.id %>"><%= review.comment %></em>
                     </li>
                   <% end %>
                 <% end %>
-                <div>
+                <div id="reviews">
                   <% if @review.new_record? %>
-                    <%= simple_form_for [@report, @review] do |f| %>
+                    <%= simple_form_for([@report, @review], remote: true) do |f| %>
                       <div class="form-list">
-                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?', autofocus: true %>
                       </div>
                       <div align="center">
                         <%= f.submit "Comentar", class: "btn btn-primary" %>
@@ -74,7 +74,7 @@
                   <% else %>
                     <%= simple_form_for @review, url: review_path(@review), html: {method: "patch"} do |f| %>
                       <div class="form-list">
-                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?', autofocus: true %>
                       </div>
                       <div align="center">
                         <%= f.submit "Comentar", class: "btn btn-primary" %>
