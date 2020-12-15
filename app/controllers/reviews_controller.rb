@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_report, only: %i[create]
   before_action :set_review, only: %i[destroy edit update]
+  respond_to :js, :html, :json
 
   # def new
   # it is not necessary, since reviews will be injected on reports/show page

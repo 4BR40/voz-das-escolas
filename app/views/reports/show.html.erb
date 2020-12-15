@@ -47,7 +47,7 @@
                       </div>
                       <em id="review-<%= review.id %>"><%= review.comment %></em>
                       <div class="d-flex justify-content-around" style="font-size: 8px;">
-                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete, remote: true, data: { confirm: 'Certeza?'} %>
+                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete, remote: true, data: { confirm: 'Certeza?' } %>
                         <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_review_path(review) %>
                       </div>
                     </li>
