@@ -7,7 +7,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 30px;
 }
 
 .navbar-light .navbar-nav .active .nav-link {
@@ -20,5 +20,6 @@
 
 .navbar-app-name {
   color: white;
-  font-style: oblique;
+  font-style: bold;
+  justify-content: inline;
 }
