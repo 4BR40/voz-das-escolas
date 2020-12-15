@@ -4,50 +4,49 @@
   </div>
 
 <br>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div>
-        <% @reports.each do |report| %>
-          <% if current_user.school == report.school %>
-            <div class="card" style="width: 19rem; margin-bottom: 24px;">              
-              <% if report.photos.attached?  %>
-                <% if report.photos.count > 1 %>
-                  <%= render 'shared/carousel', photos: report.photos %>
-                <% else %>
-                  <%=  cl_image_tag report.photos[0].key, class: "d-block w-100"  %>
-                <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <% @reports.each do |report| %>
+      <% if current_user.school == report.school %>
+        <div class="card" style="width: 19rem; margin-bottom: 24px;">              
+          <% if report.photos.attached?%>
+            <%= link_to report_path(report) do %>
+              <% if report.photos.count > 1 %>
+                <%= render 'shared/carousel', photos: report.photos %>
               <% else %>
-                <img class="card-img-top" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <%=  cl_image_tag report.photos[0].key, class: "d-block w-100"  %>
               <% end %>
-                <%= link_to report_path(report) do %>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
-                  </div>
-                  <% if report.solved? %>
-                      <p>🟢 Resolvido </p>
-                    <% else %>
-                      <p>🟠 Pendente </p>
-                  <% end %>
-                  <div class="d-flex justify-content-between">
-                    <p>💬 <strong><%= report.user.name %></strong></p>
-                    <% if (Date.today.day - report.created_at.day) > 1 %>
-                      <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
-                    <% elsif (Date.today.day - report.created_at.day) == 1 %>
-                      <p>🕒 Ontem </p>
-                    <% else %>
-                      <p>🕒 Hoje </p>
-                    <% end %>
-                  </div>
-                  <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
-                </div>
+            <% end %>
+          <% end %>
+          <%= link_to report_path(report) do %>
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
+                <%=  image_tag( "#{report.category.name}.png", width: 32, height: 32) if ActionController::Base.helpers.resolve_asset_path("#{report.category.name}.png") %>
+              </div>
+              <% if report.solved? %>
+                  <p>🟢 Resolvido </p>
+                <% else %>
+                  <p>🟠 Pendente </p>
               <% end %>
+              <div class="d-flex justify-content-between">
+                <p>💬 <strong><%= report.user.name %></strong></p>
+                <% if (Date.today.day - report.created_at.day) > 1 %>
+                  <p>🕒 Há <%= (Date.today.day - report.created_at.day) %> dias</p>
+                <% elsif (Date.today.day - report.created_at.day) == 1 %>
+                  <p>🕒 Ontem </p>
+                <% else %>
+                  <p>🕒 Hoje </p>
+                <% end %>
+              </div>
+              <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
             </div>
           <% end %>
-        <% end %>
-      </div>
-    </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
+</div>
   
   <br>
 
