@@ -8,7 +8,9 @@
 }
 
 .card-img-top {
-  height: 164px;
+  height: 25vh;
+  background-size:cover;
+  background-position: center center;
 }
 
 .block-with-text {
@@ -35,5 +37,22 @@
 .card {
   a {
     text-decoration: none;
+  }
+}
+
+.card-body {
+  p {
+    margin-bottom: 0.3rem;
+  }
+  hr {
+    margin-top: 0;
+    margin-bottom: 3px;
+  }
+
+  .comment-attr{
+    font-size: x-small;
+  }
+  .comment {
+    font-size: small;
   }
 }

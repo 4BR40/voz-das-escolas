@@ -3,12 +3,22 @@ class SchoolsController < ApplicationController
   before_action :set_school, only: %i[show edit update destroy]
 
   def index
-    if params[:query].present?
-      @schools = policy_scope(School).search_general(params[:query])
-    else
-      # @schools = School.all
-      @schools = policy_scope(School).order(created_at: :desc)
+    @schools = School.all
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @schools.map do |school|
+      {
+        lat: school.lat,
+        lng: school.lng,
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { school: school })
+      }
     end
+
+    # if params[:query].present?
+    #   @schools = policy_scope(School).search_general(params[:query])
+    # else
+    #   # @schools = School.all
+    #   @schools = policy_scope(School).order(created_at: :desc)
+    # end
   end
 
   def new
