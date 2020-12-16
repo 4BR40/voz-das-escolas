@@ -30,10 +30,14 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { previewImageOnFileSelect } from '../components/photo_preview';
 
+//Plugin Mapbox
+import { initMapbox } from '../plugins/init_mapbox';
+
 document.addEventListener('turbolinks:load', () => {
   previewImageOnFileSelect();
   // Call your functions here, e.g:
   // initSelect2();
+  initMapbox();
 });
 // const $ = document.querySelector.bind(document);
 // const previewImg = $('.preview-img');
