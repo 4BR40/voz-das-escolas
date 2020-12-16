@@ -1,0 +1,291 @@
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 33%;
+  margin-bottom: 4px;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+  padding: 30px 8px 30px 8px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: #8ecae6;
+}
+
+.category-selector:checked + label {
+  color: white !important;
+}
+
+
+#report_category_id_1 + label {
+  color: white;
+  background-image: url('Aulas.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_1:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+
+#report_category_id_2 + label {
+  color: white;
+  background-image: url('Informática.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_2:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+#report_category_id_3 + label {
+  color: white;
+  background-image: url('Merenda.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_3:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+
+#report_category_id_4 + label {
+  color: white;
+  background-image: url('Segurança.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_4:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+#report_category_id_5 + label {
+  color: white;
+  background-image: url('Manutenção.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_5:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+
+#report_category_id_6 + label {
+  color: white;
+  background-image: url('Limpeza.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_6:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+#report_category_id_7 + label {
+  color: white;
+  background-image: url('Livros.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_7:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+
+#report_category_id_8 + label {
+  color: white;
+  background-image: url('Ventilação.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_8:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+#report_category_id_9 + label {
+  color: white;
+  background-image: url('Transporte.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_9:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+
+#report_category_id_10 + label {
+  color: white;
+  background-image: url('Esportes.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_10:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+#report_category_id_11 + label {
+  color: white;
+  background-image: url('Bullying.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_11:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}
+
+
+#report_category_id_12 + label {
+  color: white;
+  background-image: url('Outros.png');
+  background-image: linear-gradient(rgba(0,0,0,0.3));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#report_category_id_12:checked + label {
+  background-color: $my-yellow;
+  border-color: $my-yellow;
+}

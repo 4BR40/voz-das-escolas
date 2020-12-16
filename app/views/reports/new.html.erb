@@ -41,7 +41,14 @@
           <#% else %>
           <#% end %> -->
         <p>3. Este problema está associado a:</p>
-        <%= f.association :category, label: false %>
+        <%= f.association :category,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            legend_tag: false %>
+
         <p>4. Caso deseje publicar seu relato, marque a opção "público" abaixo</p>
           <fieldset class="form-group boolean optional snippet_archived">
             <div class="form-check">
