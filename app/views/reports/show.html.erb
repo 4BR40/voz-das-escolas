@@ -27,27 +27,32 @@
                 <p>🟠 Pendente </p>
               <% end %>
               <div class="d-flex justify-content-between">
-                <p>💬 <strong><%= @report.user.name %></strong></p>
-                <p> 🕒 Há <%= time_ago_in_words(@report.created_at) %></p>
+                <p> 💬 <strong><%= @report.user.name %></strong> </p>
+                <p> <small>🕒 Há <%= time_ago_in_words(@report.created_at) %></small> </p>
               </div>
               <p class="card-text" style="width: 17rem;"><%= @report.description %>
-                <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_report_path(@report) if current_user == @report.user %>
+              <% if current_user == @report.user %>
+                <div class="d-flex justify-content-around" style="font-size: 6px;">
+                  <%= link_to '<i class="fas fa-trash fa-3x"></i>'.html_safe, report_path(@report), method: :delete, data: { confirm: 'Certeza?' } %>
+                  <%= link_to '<i class="fas fa-edit fa-3x"></i>'.html_safe, edit_report_path(@report) %>
+                </div>
+              <% end %>
               </p>
 
               <div class="d-flex justify-content-end">
               </div>
               <h6><strong>Comentários:</strong></h6>
               <ul class="list-group">
-                <% @report.reviews.each do |review| %>
+                <% @report.reviews.order('created_at ASC').each do |review| %>
                   <% if current_user == review.user %>
                     <li class="list-group-item">
                       <div class="d-flex justify-content-between">
                         <strong>💬 <%= review.user.name %></strong>
                         <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
                       </div>
-                      <em><%= review.comment %></em>
+                      <em id="review-<%= review.id %>"><%= review.comment %></em>
                       <div class="d-flex justify-content-around" style="font-size: 8px;">
-                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete %>
+                        <%= link_to '<i class="fas fa-trash fa-2x"></i>'.html_safe, review_path(review), method: :delete, remote: true, data: { confirm: 'Certeza?' } %>
                         <%= link_to '<i class="fas fa-edit fa-2x"></i>'.html_safe, edit_review_path(review) %>
                       </div>
                     </li>
@@ -57,15 +62,15 @@
                         <strong>💬 <%= review.user.name %></strong>
                         <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
                       </div>
-                      <em><%= review.comment %></em>
+                      <em id="review-<%= review.id %>"><%= review.comment %></em>
                     </li>
                   <% end %>
                 <% end %>
-                <div>
+                <div id="reviews">
                   <% if @review.new_record? %>
-                    <%= simple_form_for [@report, @review] do |f| %>
+                    <%= simple_form_for([@report, @review], remote: true) do |f| %>
                       <div class="form-list">
-                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?', autofocus: true %>
                       </div>
                       <div align="center">
                         <%= f.submit "Comentar", class: "btn btn-primary" %>
@@ -74,7 +79,7 @@
                   <% else %>
                     <%= simple_form_for @review, url: review_path(@review), html: {method: "patch"} do |f| %>
                       <div class="form-list">
-                        <%= f.input :comment, label: 'O que você pensa sobre este problema?' %>
+                        <%= f.input :comment, label: 'O que você pensa sobre este problema?', autofocus: true %>
                       </div>
                       <div align="center">
                         <%= f.submit "Comentar", class: "btn btn-primary" %>

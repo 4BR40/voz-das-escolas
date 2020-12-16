@@ -1,7 +1,6 @@
 class ReportsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:new]
-  before_action :set_report, only: %i[show upvote downvote]
+  before_action :set_report, only: %i[show edit update upvote downvote destroy]
   respond_to :js, :html, :json
 
   def new
@@ -21,13 +20,17 @@ class ReportsController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def edit
   end
 
+  def update
+    @report.update(report_params)
+    redirect_to report_path(@report)
+  end
+
   def destroy
+    @report.destroy
+    redirect_to school_reports_path(@report.school)
   end
 
   def index
@@ -41,25 +44,22 @@ class ReportsController < ApplicationController
   def upvote
     # @report = Report.find(params[:id])
     @report.upvote_by current_user
-    redirect_to school_reports_path(@report.school)
+    redirect_to school_reports_path(@report.school, anchor: "report-#{@report.id}")
   end
 
   def downvote
     # @report = Report.find(params[:id])
     @report.downvote_by current_user
-    redirect_to school_reports_path(@report.school)
+    redirect_to school_reports_path(@report.school, anchor: "report-#{@report.id}")
   end
-
 
   private
 
   def set_report
     @report = Report.find(params[:id])
-
   end
 
   def report_params
     params.require(:report).permit(:description, :category_id, photos: [])
-
   end
 end

@@ -1,2 +1,22 @@
-<h1>Reports#edit</h1>
-<p>Find me in app/views/reports/edit.html.erb</p>
+<div class="container-md">
+  <div class="row justify-content-center">
+    <div class="cellbody col-md-5">
+      <h1>Altere o seu relato</h1>
+    </div>
+  </div>
+</div>
+<div class="container-md">
+  <div class="row justify-content-center">
+    <div class="cellbody col-md-5 pb-5">
+      <%= simple_form_for @report do |f| %>
+        <%= f.input :description, as: :text, label:"Altere a descrição do problema" %>
+        <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+        <p>Caso queira alterar as imagens usadas, insira novas aqui:</p>
+        <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Faça o upload' %>
+        <p>Caso queira alterar a categoria do problema, escolha abaixo:</p>
+        <%= f.association :category, label: false %>
+        <%= f.button :submit, 'Alterar relato', class: 'btn btn-info btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>

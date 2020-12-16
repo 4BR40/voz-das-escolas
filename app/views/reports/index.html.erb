@@ -7,10 +7,10 @@
 
 <div class="container">
   <div class="row justify-content-center">
-  <div>
-    <% @reports.each do |report| %>
+  <div id="reports">
+    <% @reports.order('updated_at DESC').each do |report| %>
       <% if current_user.school == report.school %>
-        <div class="card mt-3" style="width: 19rem">
+        <div id="report-<%= report.id %>" class="card mt-3" style="width: 19rem">
           <% if report.photos.attached?%>
             <%= link_to report_path(report) do %>
               <% if report.photos.count > 1 %>
@@ -37,16 +37,16 @@
               </div>
               <div class="d-flex justify-content-between">
                 <p>💬 <strong><%= report.user.name %></strong></p>
-                <p> 🕒 Há <%= time_ago_in_words(report.created_at) %></p>
+                <p> <small>🕒 Há <%= time_ago_in_words(report.created_at) %></small></p>
               </div>
               <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
               <div style="display:inline-block;" class="d-flex justify-content-between">
                 <div class="d-flex justify-content-between upvote-downvote">
-                  <%= link_to dislike_report_path(report), method: :put, remote: :true do %>
+                  <%= link_to dislike_report_path(report), method: :put, remote: true do %>
                     <strong><%= report.get_downvotes.size %></strong>
                     👎
                   <% end %>
-                  <%= link_to like_report_path(report), method: :put, remote: :true do %>
+                  <%= link_to like_report_path(report), method: :put, remote: true do %>
                     👍
                     <strong><%= report.get_upvotes.size %></strong>
                   <% end %>
