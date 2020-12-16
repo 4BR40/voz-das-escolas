@@ -53,6 +53,7 @@ class ReportsController < ApplicationController
     redirect_to school_reports_path(@report.school, anchor: "report-#{@report.id}")
   end
 
+
   private
 
   def set_report

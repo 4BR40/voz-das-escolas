@@ -30,6 +30,9 @@ gem 'acts_as_votable'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Search engine
+gem 'pg_search'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
