@@ -16,7 +16,7 @@
         <p>Caso queira alterar a categoria do problema, escolha abaixo:</p>
         <%= f.association :category, label: false %>
         <p>Se quiser declarar como <strong>resolvido</strong> o problema, marque abaixo:</p>
-        <%= f.input :solved, as: :boolean, input_html: { class: "toggle" } %>
+        <%= f.input :solved, input_html: { class: "toggle" } %>
         <%= f.button :submit, 'Alterar relato', class: 'btn btn-info btn-block' %>
       <% end %>
     </div>

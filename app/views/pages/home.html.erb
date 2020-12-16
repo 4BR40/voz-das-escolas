@@ -11,12 +11,17 @@
         <div class="flex-item align-center">
           <%= link_to "Informe um problema", new_report_path, class: "btn btn-info" %>
         </div>
+        <br>
         <div class="flex-item align-center">
           <% if user_signed_in? %>
             <%= link_to "Veja os problemas da sua escola", school_reports_path(current_user.school_id), class: "link-escola" %>
           <% else %>
             <%= link_to "Veja os problemas da sua escola", new_user_session_path, class: "link-escola" %>
           <% end %>
+          <br>
+          <br>
+          <br>
+          <br>
         </div>
       </div>
     </div>
