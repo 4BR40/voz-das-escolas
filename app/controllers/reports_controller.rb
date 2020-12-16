@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new]
-  before_action :set_report, only: %i[show edit update upvote downvote]
+  before_action :set_report, only: %i[show edit update upvote downvote destroy]
   respond_to :js, :html, :json
 
   def new
@@ -28,9 +28,9 @@ class ReportsController < ApplicationController
     redirect_to report_path(@report)
   end
 
-
-
   def destroy
+    @report.destroy
+    redirect_to school_reports_path(@report.school)
   end
 
   def index
