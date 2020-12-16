@@ -16,7 +16,9 @@
               <% if report.photos.count > 1 %>
                 <%= render 'shared/carousel', photos: report.photos %>
               <% else %>
-                <%=  cl_image_tag report.photos[0].key, class: "d-block w-100"  %>
+                <div class="card-img-top" 
+                      style="background-image: url(<%= cl_image_path report.photos[0].key %>);">
+                </div>
               <% end %>
             <% end %>
           <% end %>

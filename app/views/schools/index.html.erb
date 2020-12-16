@@ -1,46 +1,34 @@
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 mt-3">
-    <div id="map"
-     style="width: 100%; height: 350px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							Cod. Inep
-						</th>
-						<th>
-							Nome
-						</th>
-						<th>
-							Problemas
-						</th>
-            <th>
-							Lat / Lng
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-        <% @schools.first(5).each do |school| %>
-        <tr>
-          <td>
-							<%= school.id %>
-						</td>
-						<td>
-							<%= school.name %>
-						</td>
-						<td>
-							<%= school.reports.count %>
-						</td>
-						<td>
-							<%= school.lat %>
-						</td>
-					</tr>
-        <% end %>
-				</tbody>
-			</table>
+  <div class="row">
+    <div class="col-md-8 mt-3">
+      <div id="map"
+        style="width: 100%; height: 350px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <table class="table table-sm table-hover ">
+        <thead>
+          <tr>
+            <th>Cod. Inep</th>
+            <th>Nome</th>
+            <th>Problemas</th>
+            <th>Resolvidos</th>
+            <th>Pendentes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schools.first(6).each do |school| %>
+            <tr>
+              <td><%= school.id %></td>
+                <td><%= school.name %></td>
+                <td><%= school.reports.count %></td>
+                <td><%= school.reports.where("solved = ?", true).count %></td>
+                <td><%= school.reports.where("solved = ?", false).count %></td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 			<nav>
 				<ul class="pagination">
 					<li class="page-item">
@@ -71,7 +59,7 @@
       <% @schools.each do |school| %>
         <% school.reports.each do |report| %>
 
-          <div class="card mt-3" style="width: 19rem">
+          <div class="card mt-3" >
               <% if report.photos.attached?%>
                 <%= link_to report_path(report) do %>
                   <% if report.photos.count > 1 %>
@@ -86,7 +74,7 @@
               <%= link_to report_path(report) do %>
                 <div class="card-body">
                   <div class="d-flex justify-content-between">
-                    <h4 class="card-text" style="width: 17rem"><strong><%= report.category.name %></strong></h4>
+                    <h4 class="card-text" ><strong><%= report.category.name %></strong></h4>
                     <%=  image_tag( "#{report.category.name}.png", width: 32, height: 32) if ActionController::Base.helpers.resolve_asset_path("#{report.category.name}.png") %>
                   </div>
                   <div style="display:inline-block;" class="d-flex justify-content-between">
@@ -97,14 +85,7 @@
                         <p>🟠 Pendente </p>
                       <% end %>
                     </div>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p>💬 <strong><%= report.user.name %></strong></p>
-                    <p> 🕒 Há <%= time_ago_in_words(report.created_at) %></p>
-                  </div>
-                  <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
-                  <div style="display:inline-block;" class="d-flex justify-content-between">
-                    <div class="d-flex justify-content-between upvote-downvote">
+                    <div class="d-flex justify-content-between ">
                       <%= link_to dislike_report_path(report), method: :put, remote: :true do %>
                         <strong><%= report.get_downvotes.size %></strong>
                         👎
@@ -115,6 +96,20 @@
                       <% end %>
                     </div>
                   </div>
+                  <div class="d-flex justify-content-between">
+                    <p>💬 <strong><%= report.user.name %></strong></p>
+                    <p> 🕒 Há <%= time_ago_in_words(report.created_at) %></p>
+                  </div>
+                  <p class="card-text block-with-text" ><%= report.description %></p>
+                  <% report.reviews.each do |review| %>
+                    <hr>
+                    <div class="comment-attr d-flex justify-content-between">
+                        <strong>💬 <%= review.user.name %></strong>
+                        <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
+                      </div>
+                      <em class="comment" id="review-<%= review.id %>"><%= review.comment %></em> 
+                  <% end %>
+
                 </div>
               <% end %>
             </div>
