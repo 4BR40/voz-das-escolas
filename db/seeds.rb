@@ -196,6 +196,7 @@ rep2 = Report.create!(
   description: 'Os banheiros estão sujos e sempre falta papel higiênnico.',
   category_id: limpeza.id,
   school_id: School.first.id,
+  solved: false,
   user_id: usr1.id
 )
 rep2.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -210,6 +211,7 @@ rep3 = Report.create!(
   description: 'A merenda está uma vergonha. Vejam as fotos',
   category_id: merenda.id,
   school_id: School.first.id,
+  solved: false,
   user_id: usr2.id
 )
 rep3.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -231,6 +233,7 @@ rep5 = Report.create!(
   description: 'Tem uma turma que está pegando do pé dos alunos da oitava série. Tem aluno que parou de vir para a escola por causa disso.',
   category_id: bullying.id,
   school_id: School.first.id,
+  solved: false,
   user_id: usr1.id
 )
 # rep.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -249,6 +252,7 @@ rep7 = Report.create!(
   user_id: usr4.id,
   school_id: School.first.id,
   category_id: info.id,
+  solved: false,
   description: 'Entregaram computadores novos no laboratório há dois meses, mas eles ainda não foram ligasos, estão amontoados no almoxarifado. E as turmas do segundo e terceiro anos estão sem poder realizar pesquisas. Absurdo!'
 )
 rep7.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -277,6 +281,7 @@ rep10 = Report.create!(
   user_id: usr10.id,
   school_id: School.first.id,
   category_id: seguranca.id,
+  solved: false,
   description: 'Na porta da escola, toda quinta-feira, tem dois carinhas que ficam vendendo do branco pra galera...'
 )
 
@@ -285,7 +290,8 @@ file = URI.open('https://http2.mlstatic.com/D_NQ_NP_696447-MLB31419835019_072019
 rep11 = Report.create!(
   user_id: usr11.id,
   school_id: School.first.id,
-  category_id: 'A quadra de esporte ficou lindona. Mas cadê as bolas e a rede para a gente jogar?'
+  category_id: esportes.id,
+  description: 'A quadra de esporte ficou lindona. Mas cadê as bolas e a rede para a gente jogar?'
 )
 rep11.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -303,6 +309,7 @@ rep13 = Report.create!(
   user_id: usr4.id,
   school_id: School.first.id,
   category_id: aulas.id,
+  solved: false,
   description: 'O professor de Física do 2 ano, turma B, está faltando dia sim, dia também. Quem consegue aprender algo assim?'
 )
 rep13.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -321,6 +328,7 @@ rep15 = Report.create!(
   user_id: usr11.id,
   school_id: School.first.id,
   category_id: transporte.id,
+  solved: false,
   description: 'Tem empresa que não aceita o passe-escolar, tem dia que não consigo vir para a escola.'
 )
 
@@ -330,6 +338,7 @@ rep16 = Report.create!(
   user_id: usr5.id,
   school_id: 53_000_234,
   category_id: aulas.id,
+  solved: false,
   description: 'Aula online precisa ser planejada também. Não dá para ficar só lendo os exercícios do livro-texto.'
 )
 rep16.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -341,6 +350,7 @@ rep17 = Report.create!(
   user_id: usr6.id,
   school_id: 53_000_439,
   category_id: livros.id,
+  solved: false,
   description: 'Podiam comprar livros do Harry Potter, por favor?'
 )
 #rep17.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -351,6 +361,7 @@ rep18 = Report.create!(
   user_id: usr7.id,
   school_id: 53_000_714,
   category_id: ventilacao.id,
+  solved: false,
   description: 'Ninguém acredita, mas nossa sala é muito gelada. Não bate sol em nenhuma hora do dia e as janelas está emperradas, não fecham. Fica uma corrente de ar gelado que está deixado todo mundo resfriado.'
 )
 #rep18.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -361,6 +372,7 @@ rep19 = Report.create!(
   user_id: usr8.id,
   school_id: 53_000_846,
   category_id: transporte.id,
+  solved: false,
   description: 'A escola atrasou o envio das informações dos alunos e estou sem o passe-escolar.'
 )
 #rep19.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -371,6 +383,7 @@ rep20 = Report.create!(
   user_id: usr9.id,
   school_id: 53_000_854,
   category_id: ventilacao.id,
+  solved: false,
   description: 'A sala é toda mofada, não tem circulação de ar.'
 )
 rep20.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -382,6 +395,7 @@ rep21 = Report.create!(
   user_id: usr5.id,
   school_id: 53_000_234,
   category_id: outros.id,
+  solved: true,
   description: 'Porque a escola não permitiu que a gente de inscrevesse na Olimpíada de Matemática?'
 )
 #rep21.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -393,6 +407,7 @@ rep22 = Report.create!(
   user_id: usr6.id,
   school_id: 53_000_439,
   category_id: esportes.id,
+  solved: false,
   description: 'Porque a escola não faz um acordo com o clube das Paineiras para que a gente possa usar a piscina deles?'
 )
 #rep22.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -415,6 +430,7 @@ rep24 = Report.create!(
   user_id: usr8.id,
   school_id: 53_000_846,
   category_id: transporte.id,
+  solved: false,
   description: 'O ônibus escolar está quebrado há dois meses.'
 )
 rep24.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -437,6 +453,7 @@ rep26 = Report.create!(
   user_id: usr5.id,
   school_id: 53_000_234,
   category_id: manut.id,
+  solved: false,
   description: 'Muita fiação exposta no pátio da escola. Perigoso.'
 )
 rep26.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -459,6 +476,7 @@ rep28 = Report.create!(
   user_id: usr7.id,
   school_id: 53_000_714,
   category_id: info.id,
+  solved: false,
   description: 'Porque a escola não começa a oferecer aulas de programação? Tem um curso legal de uma tal de LeWagon que eu vi na internet…
 '
 )
@@ -482,6 +500,7 @@ rep30 = Report.create!(
   user_id: usr9.id,
   school_id: 53_000_854,
   category_id: limpeza.id,
+  solved: false,
   description: 'Cheio de lugar com água acumulada. A dengue agradece!'
 )
 rep30.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -494,6 +513,7 @@ rep31 = Report.create!(
   user_id: usr5.id,
   school_id: 53_000_234,
   category_id: manut.id,
+  solved: false,
   description: 'As salas do segundo andar precisam urgentemente de reforma, inclusive as carteiras. Antes que aconteça um acidente e alguém se machuque.'
 )
 rep31.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -524,6 +544,7 @@ rep34 = Report.create!(
   user_id: usr8.id,
   school_id: 53_000_846,
   category_id: esportes.id,
+  solved: false,
   description: 'Porque as aulas de Educação Física só oferecem futebol?'
 )
 #rep34.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -544,6 +565,7 @@ rep36 = Report.create!(
   user_id: usr5.id,
   school_id: 53_000_234,
   category_id: livros.id,
+  solved: false,
   description: 'Precisamos de livros de história brasileira contemporânea aqui.'
 )
 #rep36.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -564,6 +586,7 @@ rep38 = Report.create!(
   user_id: usr7.id,
   school_id: 53_000_714,
   category_id: esportes.id,
+  solved: false,
   description: 'Nosso time de basquete não pode participar do campeonato das escolas porque a tabela da nossa quadra está quebrada.'
 )
 rep38.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -574,6 +597,7 @@ rep39 = Report.create!(
   user_id: usr8.id,
   school_id: 53_000_846,
   category_id: merenda.id,
+  solved: false,
   description: 'Hoje o almoço da escola completou duas semanas sem nenhuma carne servida! Parabéns!'
 )
 #rep39.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -584,6 +608,7 @@ rep40 = Report.create!(
   user_id: usr9.id,
   school_id: 53_000_854,
   category_id: manut.id,
+  solved: false,
   description: 'A escola parece uma floresta, de tanto mato que tem. Aqui não é a Amazônia, nem o Pantanal: podem dar um jeito de cortar esse matagal?'
 )
 rep40.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -616,6 +641,7 @@ rep43 = Report.create!(
   user_id: usr7.id,
   school_id: 53_000_714,
   category_id: aulas.id,
+  solved: false,
   description: 'Duas professores oferecem aulas de reforço, à tarde, para os alunos que têm dificuldades na matéria. Porque não fazer isso para todas as matérias?'
 )
 #rep43.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -637,6 +663,7 @@ rep45 = Report.create!(
   user_id: usr9.id,
   school_id: 53_000_854,
   category_id: merenda.id,
+  solved: false,
   description: 'Estão me achando com cara de hot dog? Quinto dia seguido que só servem salsicha no almoço.'
 )
 #rep45.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -657,6 +684,7 @@ rep47 = Report.create!(
   user_id: usr6.id,
   school_id: 53_000_439,
   category_id: livros.id,
+  solved: false,
   description: 'A nossa biblioteca não recebe livros de poesia, nem de literatura, desde o ano passado. Alguém poderia ver como melhorar nosso acervo…'
 )
 #rep47.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -668,6 +696,7 @@ rep48 = Report.create!(
   user_id: usr7.id,
   school_id: 53_000_714,
   category_id: limpeza.id,
+  solved: false,
   description: 'A cozinha da escola é uma nojeira.'
 )
 rep48.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -679,6 +708,7 @@ rep49 = Report.create!(
   user_id: usr8.id,
   school_id: 53_000_846,
   category_id: ventilacao.id,
+  solved: false,
   description: 'Não dá para ter aula com janela aberta, por causa do barulho da rua, nem de janela fechada, por causa do calor. E ninguém conserta o ventilador de teto…'
 )
 #rep49.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -689,6 +719,7 @@ rep50 = Report.create!(
   user_id: usr9.id,
   school_id: 53_000_854,
   category_id: transporte.id,
+  solved: false,
   description: 'A linha que parava perto da escola, a 1158, foi alterada. Quase todos os alunos foram prejudicados, agora temos que andar 5km para chegar no ponto mais próximo…'
 )
 #rep50.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
