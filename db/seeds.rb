@@ -425,7 +425,7 @@ rep23 = Report.create!(
 
 
 
-file = URI.open('https://catunoticias.com.br/wp-content/uploads/2018/08/denúncia-ônibus-6-685x430.jpg')
+#file = URI.open('https://catunoticias.com.br/wp-content/uploads/2018/08/denúncia-ônibus-6-685x430.jpg')
 rep24 = Report.create!(
   user_id: usr8.id,
   school_id: 53_000_846,
@@ -433,7 +433,7 @@ rep24 = Report.create!(
   solved: false,
   description: 'O ônibus escolar está quebrado há dois meses.'
 )
-rep24.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+#rep24.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 
 
