@@ -4,7 +4,7 @@ class SchoolsController < ApplicationController
 
   def index
     @schools = School.all
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @categories = Category.all
     @markers = @schools.map do |school|
       {
         lat: school.lat,
