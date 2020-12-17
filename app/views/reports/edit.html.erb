@@ -1,7 +1,7 @@
 <div class="container-md">
   <div class="row justify-content-center">
     <div class="cellbody col-md-5">
-      <h1>Altere o seu relato</h1>
+      <h1>Altere seu relato</h1>
     </div>
   </div>
 </div>
@@ -9,14 +9,30 @@
   <div class="row justify-content-center">
     <div class="cellbody col-md-5 pb-5">
       <%= simple_form_for @report do |f| %>
-        <%= f.input :description, as: :text, label:"Altere a descrição do problema" %>
+        <%= f.input :description, as: :text, label:"1. Altere a descrição do problema:" %>
         <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
-        <p>Caso queira alterar as imagens usadas, insira novas aqui:</p>
+        <p>2. Caso queira alterar as imagens postadas, insira novas aqui:</p>
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Faça o upload' %>
-        <p>Caso queira alterar a categoria do problema, escolha abaixo:</p>
-        <%= f.association :category, label: false %>
-        <p>Se quiser declarar como <strong>resolvido</strong> o problema, marque abaixo:</p>
-        <%= f.input :solved, input_html: { class: "toggle" } %>
+        <p>3. Caso queira alterar a categoria do problema, escolha abaixo:</p>
+        <%= f.association :category,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            legend_tag: false %>
+        <p>4. Marque "público" se quiser que seu relato fique visível para sua escola: </p>
+        <fieldset class="form-group boolean optional snippet_archived">
+          <div class="form-check">
+            <input name="snippet[archived]" type="hidden" value="0">
+            <input class="form-check-input boolean optional toggle" type="checkbox" value="1" name="snippet[archived]" id="snippet_archived">
+            <label class="form-check-label boolean optional" for="snippet_archived">Público</label>
+          </div>
+        </fieldset>
+        <br>
+        <p>5. Marque abaixo para declarar o problema como <strong>resolvido</strong>:</p>
+        <%= f.input :solved, label: 'Resolvido!', input_html: { class: "toggle" } %>
+        <br>
         <%= f.button :submit, 'Alterar relato', class: 'btn btn-info btn-block' %>
       <% end %>
     </div>
