@@ -158,9 +158,9 @@ usr13.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 file = URI.open('https://avatars1.githubusercontent.com/u/49009639?s=400&u=27c9a376465c41e73170e4f6f8841b1da2c54bf3&v=4')
 usr15 = User.create!(
-  email: 'ronaldo@def.com',
+  email: 'abrao@def.com',
   password: '123456',
-  name: 'Ronaldo',
+  name: 'Abrão',
   role: 'student',
   school_id: School.first.id
 )
