@@ -9,8 +9,9 @@
         <p>2. Se quiser, compartilhe uma ou mais fotos para ilustrar a situação:</p>
         <%#= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
         <div class="gallery" ></div>
+        <div class="align-left">
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Faça o upload' %>
-
+        </div>
        <!-- deixei comentado abaixo um código para criar um preview em carrossel caso consigamos fazer o upload de mais de uma imagem -->
        <!--  <#% if nil %>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 250px">
