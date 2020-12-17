@@ -48,7 +48,7 @@ usr3 = User.create!(
   password: '123456',
   name: 'Maria',
   role: 'student',
-  school_id: School.last.id
+  school_id: School.first.id
 )
 usr3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -58,7 +58,7 @@ usr4 = User.create!(
   password: '123456',
   name: 'João',
   role: 'student',
-  school_id: School.last.id
+  school_id: School.first.id
 )
 usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -78,7 +78,7 @@ usr6 = User.create!(
   school_id: 53_000_439
 )
 
-usr6 = User.create!(
+usr7 = User.create!(
   email: 'rita@def.com',
   password: '123456',
   name: 'Rita',
@@ -86,7 +86,7 @@ usr6 = User.create!(
   school_id: 53_000_714
 )
 
-usr6 = User.create!(
+usr8 = User.create!(
   email: 'caio@def.com',
   password: '123456',
   name: 'Caio',
@@ -94,12 +94,28 @@ usr6 = User.create!(
   school_id: 53_000_846
 )
 
-usr6 = User.create!(
+usr9 = User.create!(
   email: 'pedro@def.com',
   password: '123456',
   name: 'Pedro',
   role: 'student',
   school_id: 53_000_854
+)
+
+usr10 = User.create!(
+  email: 'sandra@def.com',
+  password: '123456',
+  name: 'Sandra',
+  role: 'student',
+  school_id: School.first.id
+)
+
+usr11 = User.create!(
+  email: 'renata@def.com',
+  password: '123456',
+  name: 'Renata',
+  role: 'student',
+  school_id: School.first.id
 )
 
 aulas = Category.create!(name: 'Aulas', accept_problem: true)
@@ -159,7 +175,7 @@ rep1 = Report.create!(
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
   category_id: aulas.id,
-  school_id: School.last.id,
+  school_id: School.first.id,
   user_id: usr4.id,
   solved: true
 )
@@ -180,7 +196,7 @@ rep2 = Report.create!(
 # reports
 Report.create!(
   user_id: usr3.id,
-  school_id: School.last.id,
+  school_id: School.first.id,
   category_id: livros.id,
   description: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
@@ -188,7 +204,7 @@ Report.create!(
 )
 Report.create!(
   user_id: usr4.id,
-  school_id: School.last.id,
+  school_id: School.first.id,
   category_id: info.id,
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
@@ -205,21 +221,21 @@ Report.create!(
 )
 Report.create!(
   user_id: usr4.id,
-  school_id: School.last.id,
+  school_id: School.first.id,
   category_id: seguranca.id,
   description: 'Casamentiss faiz malandris se pirulitá. Quem num gosta di mé,
                 boa gentis num é. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: usr1.id,
+  user_id: usr10.id,
   school_id: School.first.id,
   category_id: seguranca.id,
   description: 'Vide electram sadipscing et per. Nullam volutpat
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: usr2.id,
+  user_id: usr11.id,
   school_id: School.first.id,
   category_id: esportes.id,
   description: 'Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Nullam volutpat
@@ -227,22 +243,22 @@ Report.create!(
 )
 Report.create!(
   user_id: usr3.id,
-  school_id: School.last.id,
+  school_id: School.first.id,
   category_id: outros.id,
   solved: true,
   description: 'Vide electram sadipscing et per. Nullam volutpat nec leo commodo, ut interdum diam laoreet.
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: usr2.id,
+  user_id: usr4.id,
   school_id: School.first.id,
   category_id: aulas.id,
   description: 'Nullam volutpat nec leo commodo, ut interdum diam laoreet. Vide electram sadipscing et per.
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: usr4.id,
-  school_id: School.last.id,
+  user_id: usr2.id,
+  school_id: School.first.id,
   category_id: outros.id,
   solved: true,
   description: 'Quem num gosta di mé,
@@ -250,7 +266,7 @@ Report.create!(
                 risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
 )
 Report.create!(
-  user_id: usr2.id,
+  user_id: usr11.id,
   school_id: School.first.id,
   category_id: transporte.id,
   description: 'Nullam volutpatrisus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.'
