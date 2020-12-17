@@ -91,12 +91,10 @@
             </div>
           </div>
         <% end %>
+        <br>
+      <%= link_to "Informe um problema", new_school_report_path(@report.school_id), class: "btn btn-info btn-block" %>
       </div>
+
     </div>
   </div>
-  <br>
-  <div class="container">
-    <%= link_to "Informe um problema", new_school_report_path(@report.school_id), class: "btn btn-info btn-block" %>
-  </div>
-  <br>
 </div>

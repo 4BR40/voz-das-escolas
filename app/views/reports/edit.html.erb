@@ -12,6 +12,7 @@
         <%= f.input :description, as: :text, label:"1. Altere a descrição do problema:" %>
         <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
         <p>2. Caso queira alterar as imagens postadas, insira novas aqui:</p>
+        <div class="gallery" ></div>
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden', id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Faça o upload' %>
         <p>3. Caso queira alterar a categoria do problema, escolha abaixo:</p>
         <%= f.association :category,
