@@ -29,8 +29,19 @@
 
       </div>
 
+      <div class="row mb-1">
+        <div class="col-12 justify-content-center">
+            <p> <%= form_tag schools_path, method: :get do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Procurar uma escola"
+              %>
+            <% end %></p>
+        </div>
+      </div>
 
-      <table class="table table-sm table-hover mt-2">
+      <table class="table table-sm table-hover ">
         <thead>
           <tr>
             <th>Cod. Inep</th>
@@ -56,7 +67,7 @@
 			<nav>
 				<ul class="pagination">
 					<li class="page-item">
-						<a class="page-link" href="#">Previous</a>
+						<a class="page-link" href="#">Anterior</a>
 					</li>
 					<li class="page-item">
 						<a class="page-link" href="#">1</a>
@@ -74,7 +85,7 @@
 						<a class="page-link" href="#">5</a>
 					</li>
 					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
+						<a class="page-link" href="#">Próximo</a>
 					</li>
 				</ul>
 			</nav>
@@ -89,7 +100,7 @@
                   <% if report.photos.count > 1 %>
                     <%= render 'shared/carousel', photos: report.photos %>
                   <% else %>
-                    <div class="card-img-top" 
+                    <div class="card-img-top"
                         style="background-image: url(<%= cl_image_path report.photos[0].key %>);">
                     </div>
                   <% end %>
@@ -131,14 +142,14 @@
                         <strong>💬 <%= review.user.name %></strong>
                         <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
                       </div>
-                      <em class="comment" id="review-<%= review.id %>"><%= review.comment %></em> 
+                      <em class="comment" id="review-<%= review.id %>"><%= review.comment %></em>
                   <% end %>
 
                 </div>
               <% end %>
             </div>
         <% end %>
-      <% end %>      
+      <% end %>
 		</div>
 	</div>
 </div>
