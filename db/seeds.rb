@@ -63,33 +63,33 @@ usr4 = User.create!(
 usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 usr5 = User.create!(
-  email: 'paulo@def.com',
+  email: 'roberto@def.com',
   password: '123456',
-  name: 'Paulo',
+  name: 'Roberto',
   role: 'student',
   school_id: 53_000_234
 )
 
 usr6 = User.create!(
-  email: 'marta@def.com',
+  email: 'bianca@def.com',
   password: '123456',
-  name: 'Marta',
+  name: 'Bianca',
   role: 'student',
   school_id: 53_000_439
 )
 
 usr7 = User.create!(
-  email: 'rita@def.com',
+  email: 'bruno@def.com',
   password: '123456',
-  name: 'Rita',
+  name: 'Bruno',
   role: 'student',
   school_id: 53_000_714
 )
 
 usr8 = User.create!(
-  email: 'caio@def.com',
+  email: 'mateus@def.com',
   password: '123456',
-  name: 'Caio',
+  name: 'Mateus',
   role: 'student',
   school_id: 53_000_846
 )
@@ -103,20 +103,68 @@ usr9 = User.create!(
 )
 
 usr10 = User.create!(
-  email: 'sandra@def.com',
+  email: 'isabela@def.com',
   password: '123456',
-  name: 'Sandra',
+  name: 'Isabela',
   role: 'student',
   school_id: School.first.id
 )
 
 usr11 = User.create!(
-  email: 'renata@def.com',
+  email: 'milene@def.com',
   password: '123456',
-  name: 'Renata',
+  name: 'Milene',
   role: 'student',
   school_id: School.first.id
 )
+
+usr16 = User.create!(
+  email: 'luiz@def.com',
+  password: '123456',
+  name: 'Luiz',
+  role: 'student',
+  school_id: School.first.id
+)
+
+file = URI.open('https://avatars1.githubusercontent.com/u/70971707?s=400&u=6bae063617f1726984e1ca0ea749e4f08af4c166&v=4')
+usr12 = User.create!(
+  email: 'sander@def.com',
+  password: '123456',
+  name: 'Sander',
+  role: 'student',
+  school_id: School.first.id
+)
+usr12.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+file = URI.open('https://semanadeinovacao.enap.gov.br/images/Felipe-Leit%C3%A3o-Valadares-Roquete.jpg')
+usr14 = User.create!(
+  email: 'felipe@def.com',
+  password: '123456',
+  name: 'Felipe',
+  role: 'student',
+  school_id: School.first.id
+)
+usr14.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+file = URI.open('https://avatars0.githubusercontent.com/u/24359915?s=400&u=30f08947de5902418cbcf706ad7fff982cfaa2ed&v=4')
+usr13 = User.create!(
+  email: 'alessandro@def.com',
+  password: '123456',
+  name: 'Alessandro',
+  role: 'student',
+  school_id: School.first.id
+)
+usr13.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+file = URI.open('https://avatars1.githubusercontent.com/u/49009639?s=400&u=27c9a376465c41e73170e4f6f8841b1da2c54bf3&v=4')
+usr15 = User.create!(
+  email: 'ronaldo@def.com',
+  password: '123456',
+  name: 'Ronaldo',
+  role: 'student',
+  school_id: School.first.id
+)
+usr15.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 aulas = Category.create!(name: 'Aulas', accept_problem: true)
 info = Category.create!(name: 'Informática', accept_problem: true)
