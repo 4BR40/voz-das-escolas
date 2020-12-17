@@ -62,6 +62,46 @@ usr4 = User.create!(
 )
 usr4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
+usr5 = User.create!(
+  email: 'paulo@def.com',
+  password: '123456',
+  name: 'Paulo',
+  role: 'student',
+  school_id: 53_000_234
+)
+
+usr6 = User.create!(
+  email: 'marta@def.com',
+  password: '123456',
+  name: 'Marta',
+  role: 'student',
+  school_id: 53_000_439
+)
+
+usr6 = User.create!(
+  email: 'rita@def.com',
+  password: '123456',
+  name: 'Rita',
+  role: 'student',
+  school_id: 53_000_714
+)
+
+usr6 = User.create!(
+  email: 'caio@def.com',
+  password: '123456',
+  name: 'Caio',
+  role: 'student',
+  school_id: 53_000_846
+)
+
+usr6 = User.create!(
+  email: 'pedro@def.com',
+  password: '123456',
+  name: 'Pedro',
+  role: 'student',
+  school_id: 53_000_854
+)
+
 aulas = Category.create!(name: 'Aulas', accept_problem: true)
 info = Category.create!(name: 'Informática', accept_problem: true)
 merenda = Category.create!(name: 'Merenda', accept_problem: true)
