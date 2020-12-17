@@ -64,13 +64,23 @@
   align-items: center;
   justify-content: center;
 
+  div {
+    text-align: center;
+    padding: 5px;
+    border: solid 1px #ccc;
+    cursor: pointer;
+    user-select: none;
+  }
+  .active {
+    background-color: #80aaff;
+  }
   img {
-    width: 60%;
+    width: 65%;
     height: auto;
     padding: 0px;
   }
 
   p {
-    font-size: 1vw;
+    font-size: small;
   }
 }

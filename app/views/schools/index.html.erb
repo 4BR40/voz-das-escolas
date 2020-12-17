@@ -15,11 +15,11 @@
         <div class="col-md-4">
 
           <div class="card" style="width: 99%; height: 350px;">
-            <div class="grid-container" >
+            <div id="grid" class="grid-container" >
               <% @categories.each do |category| %>
-                <div> 
+                <div class="cell"> 
                   <%=  image_tag( "#{category.name}.png") if ActionController::Base.helpers.resolve_asset_path("#{category.name}.png") %>
-                  <p class="card-text" ><%= category.name %> </p>
+                  <p  class="card-text" ><strong><%= category.name %></strong> </p>
                 </div>
               <% end %>
             </div>
