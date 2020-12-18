@@ -17,10 +17,12 @@
           <div class="card" style="width: 99%; height: 350px;">
             <div  id="grid" class="grid-container" >
               <% @categories.each do |category| %>
-                <div data-controller="category" data-action="click->category#toggle" data-controller="cell" data-category-target='cell' class="cell" id="<%=category.id%>" style="background-image: "> 
-                  <%=  image_tag( "#{category.name}.png") if ActionController::Base.helpers.resolve_asset_path("#{category.name}.png") %>
-                  <p  class="card-text" ><strong><%= category.name %></strong> </p>
-                </div>
+                <%= link_to schools_path( query: category.name) do %>
+                    <div data-controller="category" data-action="click->category#toggle" data-controller="cell" data-category-target='cell' class="cell" id="<%=category.id%>" style="background-image: "> 
+                      <%=  image_tag( "#{category.name}.png") if ActionController::Base.helpers.resolve_asset_path("#{category.name}.png") %>
+                      <p  class="card-text" ><strong><%= category.name %></strong> </p>
+                    </div>
+                <% end %>
               <% end %>
             </div>
           </div>
