@@ -1,4 +1,4 @@
-<% reports.each do |report| %>
+<% reports.order(:created_at => :desc).each do |report| %>
 
           <div class="card mt-2" >
               <% if report.photos.attached?%>
