@@ -15,9 +15,6 @@
                       label: "Senha",
                       required: false,
                       input_html: { autocomplete: "current-password" } %>
-          <%= f.input :password_confirmation,
-                      label: "Informe a sua Matrícula",
-                      required: true %>
           <%= f.input :remember_me,
                       label: "Lembrar minha senha",
                       as: :boolean if devise_mapping.rememberable? %>
