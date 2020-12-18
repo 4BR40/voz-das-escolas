@@ -158,25 +158,25 @@ usr13.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 file = URI.open('https://avatars1.githubusercontent.com/u/49009639?s=400&u=27c9a376465c41e73170e4f6f8841b1da2c54bf3&v=4')
 usr15 = User.create!(
-  email: 'ronaldo@def.com',
+  email: 'abrao@def.com',
   password: '123456',
-  name: 'Ronaldo',
+  name: 'Abrão',
   role: 'student',
   school_id: School.first.id
 )
 usr15.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
 aulas = Category.create!(name: 'Aulas', accept_problem: true)
+bullying = Category.create!(name: 'Bullying', accept_problem: true)
+esportes = Category.create!(name: 'Esportes', accept_problem: true)
 info = Category.create!(name: 'Informática', accept_problem: true)
-merenda = Category.create!(name: 'Merenda', accept_problem: true)
-seguranca = Category.create!(name: 'Segurança', accept_problem: true)
-manut = Category.create!(name: 'Manutenção', accept_problem: true)
 limpeza = Category.create!(name: 'Limpeza', accept_problem: true)
 livros = Category.create!(name: 'Livros', accept_problem: true)
-ventilacao = Category.create!(name: 'Ventilação', accept_problem: true)
+manut = Category.create!(name: 'Manutenção', accept_problem: true)
+merenda = Category.create!(name: 'Merenda', accept_problem: true)
+seguranca = Category.create!(name: 'Segurança', accept_problem: true)
 transporte = Category.create!(name: 'Transporte', accept_problem: true)
-esportes = Category.create!(name: 'Esportes', accept_problem: true)
-bullying = Category.create!(name: 'Bullying', accept_problem: true)
+ventilacao = Category.create!(name: 'Ventilação', accept_problem: true)
 outros = Category.create!(name: 'Outros', accept_problem: true)
 
 file = URI.open('https://www.gazetavg.com.br/wp-content/uploads/2020/03/janela-quebrada-gazeta-mar%C3%A7o-2020-1.jpeg')

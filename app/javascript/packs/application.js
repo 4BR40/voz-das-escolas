@@ -24,7 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-
+// import "../components/grid_select";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -39,6 +39,9 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
 });
+
+
+
 // const $ = document.querySelector.bind(document);
 // const previewImg = $('.preview-img');
 // const fileChooser = $('.file-chooser');
@@ -55,3 +58,5 @@ document.addEventListener('turbolinks:load', () => {
 //     // Isso disparará o evento reader.onload.
 //     reader.readAsDataURL(fileToUpload);
 // };
+
+import "controllers"

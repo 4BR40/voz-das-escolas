@@ -6,6 +6,9 @@ class School < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_general,
                   against: %i[name address city state location],
+                  associated_against: {
+                    reports: [:description]
+                  },
                   using: {
                     tsearch: { prefix: true }
                   }

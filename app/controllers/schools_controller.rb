@@ -4,13 +4,26 @@ class SchoolsController < ApplicationController
 
   def index
     @schools = School.all
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @categories = Category.all
     @markers = @schools.map do |school|
       {
         lat: school.lat,
         lng: school.lng,
         infoWindow: render_to_string(partial: "shared/info_window", locals: { school: school })
       }
+    end
+
+    if params["query"]
+      # @filter = params["search"]["flavors"].concat(params["search"]["strengths"]).flatten.reject(&:blank?)
+      @reports = Report.all.search_general(params[:query])
+    else
+      @reports = Report.all
+      # puts @reports
+    end
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: { reports: @reports } }
     end
 
     # if params[:query].present?

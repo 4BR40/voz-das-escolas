@@ -56,3 +56,31 @@
     font-size: small;
   }
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0em;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    text-align: center;
+    padding: 5px;
+    border: solid 1px #ccc;
+    cursor: pointer;
+    user-select: none;
+  }
+    .active {
+      background-color: #80aaff;
+    }
+  img {
+    width: 65%;
+    height: auto;
+    padding: 0px;
+  }
+
+  p {
+    font-size: small;
+  }
+}
