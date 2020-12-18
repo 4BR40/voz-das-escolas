@@ -1,0 +1,5 @@
+function replaceReports (innerHTML) {
+  const reports = document.getElementById('reports');
+  reports.innerHTML = innerHTML;
+}
+replaceReports("<%= j render 'reports', reports: @reports %>");

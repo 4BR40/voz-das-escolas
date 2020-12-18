@@ -15,9 +15,9 @@
         <div class="col-md-4">
 
           <div class="card" style="width: 99%; height: 350px;">
-            <div id="grid" class="grid-container" >
+            <div  id="grid" class="grid-container" >
               <% @categories.each do |category| %>
-                <div class="cell"> 
+                <div data-controller="category" data-action="click->category#toggle" data-controller="cell" data-category-target='cell' class="cell" id="<%=category.id%>" style="background-image: "> 
                   <%=  image_tag( "#{category.name}.png") if ActionController::Base.helpers.resolve_asset_path("#{category.name}.png") %>
                   <p  class="card-text" ><strong><%= category.name %></strong> </p>
                 </div>
@@ -40,8 +40,8 @@
             <% end %></p>
         </div>
       </div>
-
-      <table class="table table-sm table-hover ">
+      <div class="col-12 justify-content-center" style=" height: 35vh; overflow-y: auto;">
+      <table class="table table-sm table-hover " >
         <thead>
           <tr>
             <th>Cod. Inep</th>
@@ -52,7 +52,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @schools.first(6).each do |school| %>
+          <% @schools.first(30).each do |school| %>
             <tr>
               <td><%= school.id %></td>
                 <td><%= school.name %></td>
@@ -64,92 +64,27 @@
           <% end %>
         </tbody>
       </table>
-			<nav>
-				<ul class="pagination">
-					<li class="page-item">
-						<a class="page-link" href="#">Anterior</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">1</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">2</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">3</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">4</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">5</a>
-					</li>
-					<li class="page-item">
-						<a class="page-link" href="#">Próximo</a>
-					</li>
-				</ul>
-			</nav>
+      </div>
+			
 		</div>
 		<div class="col-md-4" style=" height: 90vh; overflow-y: auto;">
-      <% @schools.each do |school| %>
-        <% school.reports.each do |report| %>
+     
+        <%= render 'reports', reports: @reports %>
 
-          <div class="card mt-2" >
-              <% if report.photos.attached?%>
-                <%= link_to report_path(report) do %>
-                  <% if report.photos.count > 1 %>
-                    <%= render 'shared/carousel', photos: report.photos %>
-                  <% else %>
-                    <div class="card-img-top"
-                        style="background-image: url(<%= cl_image_path report.photos[0].key %>);">
-                    </div>
-                  <% end %>
-                <% end %>
-              <% end %>
-              <%= link_to report_path(report) do %>
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <h4 class="card-text" ><strong><%= report.category.name %></strong></h4>
-                    <%=  image_tag( "#{report.category.name}.png", width: 32, height: 32) if ActionController::Base.helpers.resolve_asset_path("#{report.category.name}.png") %>
-                  </div>
-                  <div style="display:inline-block;" class="d-flex justify-content-between">
-                    <div>
-                      <% if report.solved? %>
-                        <p>🟢 Resolvido </p>
-                      <% else %>
-                        <p>🟠 Pendente </p>
-                      <% end %>
-                    </div>
-                    <div class="d-flex justify-content-between ">
-                      <%= link_to dislike_report_path(report), method: :put, remote: :true do %>
-                        <strong><%= report.get_downvotes.size %></strong>
-                        👎
-                      <% end %>
-                      <%= link_to like_report_path(report), method: :put, remote: :true do %>
-                        👍
-                        <strong><%= report.get_upvotes.size %></strong>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p>💬 <strong><%= report.user.name %></strong></p>
-                    <p> 🕒 Há <%= time_ago_in_words(report.created_at) %></p>
-                  </div>
-                  <p class="card-text block-with-text" ><%= report.description %></p>
-                  <% report.reviews.each do |review| %>
-                    <hr>
-                    <div class="comment-attr d-flex justify-content-between">
-                        <strong>💬 <%= review.user.name %></strong>
-                        <p> 🕒 Há <%= time_ago_in_words(review.created_at) %></p>
-                      </div>
-                      <em class="comment" id="review-<%= review.id %>"><%= review.comment %></em>
-                  <% end %>
-
-                </div>
-              <% end %>
-            </div>
-        <% end %>
-      <% end %>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+
+  var checkBoxes = document.querySelectorAll(".cell .active");
+
+
+  var form = document.querySelector('form');
+  
+  for (const check of checkBoxes) {
+  check.addEventListener( 'change', function() {
+    Rails.fire(form, 'submit');
+  });
+  }
+</script>
