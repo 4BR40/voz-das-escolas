@@ -1,5 +1,11 @@
 // Specific CSS for your home-page
 
+@font-face {
+  font-family: "scrawlin";
+  src: font-url('scribulous_scrawlin__by_alphabeta85_d221c88.ttf') format('truetype');
+}
+$my-font: "scrawlin";
+
 .background-home {
   background-image: url('home-background-image.jpg'), linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
   background-size: cover;
@@ -9,7 +15,12 @@
 }
 
 .app-name {
-  padding: 80px 0;
+  h3{
+    font-family: $my-font, sans-serif;
+    font-size: 100px;
+    line-height: 0.75;
+  }
+
 }
 
 .app-slogan {

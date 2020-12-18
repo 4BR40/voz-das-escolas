@@ -6,11 +6,14 @@ $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: "scrawlin";
+  src: font-url('scribulous_scrawlin__by_alphabeta85_d221c88.ttf') format('truetype');
+}
+$my-font: "scrawlin";
+
+@font-face {
+  font-family: "Langar-Regular";
+  src: font-url('Langar-Regular.ttf') format('truetype');
+}
+$my-font2: "Langar-Regular";
