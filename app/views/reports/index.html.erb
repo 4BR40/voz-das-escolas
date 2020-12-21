@@ -9,7 +9,7 @@
   <div class="row justify-content-center">
   <div id="reports">
     <% @reports.order(:created_at => :desc).each do |report| %>
-      <% if current_user.school == report.school %>
+      <% if current_user.school == report.school && report.public? %>
         <div id="report-<%= report.id %>" class="card mt-3" style="width: 19rem">
           <% if report.photos.attached?%>
             <%= link_to report_path(report) do %>

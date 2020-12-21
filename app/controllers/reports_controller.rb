@@ -53,7 +53,6 @@ class ReportsController < ApplicationController
     redirect_to school_reports_path(@report.school, anchor: "report-#{@report.id}")
   end
 
-
   private
 
   def set_report
@@ -61,6 +60,6 @@ class ReportsController < ApplicationController
   end
 
   def report_params
-    params.require(:report).permit(:description, :category_id, :solved, photos: [])
+    params.require(:report).permit(:description, :category_id, :solved, :public, photos: [])
   end
 end
