@@ -21,11 +21,18 @@
                 <h4 class="card-text" style="width: 17rem"><strong><%= @report.category.name %></strong></h4>
                 <%=  image_tag( "#{@report.category.name}.png", width: 32, height: 32) if ActionController::Base.helpers.resolve_asset_path("#{@report.category.name}.png") %>
               </div>
-              <% if @report.solved? %>
-                <p>🟢 Resolvido </p>
-              <% else %>
-                <p>🟠 Pendente </p>
-              <% end %>
+              <div class="d-flex justify-content-between">
+                <div>
+                  <% if @report.solved? %>
+                    <p>🟢 Resolvido </p>
+                  <% else %>
+                    <p>🟠 Pendente </p>
+                  <% end %>
+                </div>
+                <div>
+                  <%= '🔒' if !@report.public? %>
+                </div>
+              </div>
               <div class="d-flex justify-content-between">
                 <p> 💬 <strong><%= @report.user.name %></strong> </p>
                 <p> <small>🕒 Há <%= time_ago_in_words(@report.created_at) %></small> </p>

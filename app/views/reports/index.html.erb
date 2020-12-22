@@ -9,7 +9,7 @@
   <div class="row justify-content-center">
   <div id="reports">
     <% @reports.order(:created_at => :desc).each do |report| %>
-      <% if current_user.school == report.school && report.public? %>
+      <% if (current_user.school == report.school && report.public?) || (report.user == current_user) %>
         <div id="report-<%= report.id %>" class="card mt-3" style="width: 19rem">
           <% if report.photos.attached?%>
             <%= link_to report_path(report) do %>
@@ -42,18 +42,24 @@
                 <p> <small>🕒 Há <%= time_ago_in_words(report.created_at) %></small></p>
               </div>
               <p class="card-text block-with-text" style="width: 17rem;"><%= report.description %></p>
-              <div style="display:inline-block;" class="d-flex justify-content-between">
-                <div class="d-flex justify-content-between upvote-downvote">
-                  <%= link_to dislike_report_path(report), method: :put, remote: true do %>
-                    <strong><%= report.get_downvotes.size %></strong>
-                    👎
-                  <% end %>
-                  <%= link_to like_report_path(report), method: :put, remote: true do %>
-                    👍
-                    <strong><%= report.get_upvotes.size %></strong>
-                  <% end %>
+              <% if report.public? %>
+                <div style="display:inline-block;" class="d-flex justify-content-between">
+                  <div class="d-flex justify-content-between upvote-downvote">
+                    <%= link_to dislike_report_path(report), method: :put, remote: true do %>
+                      <strong><%= report.get_downvotes.size %></strong>
+                      👎
+                    <% end %>
+                    <%= link_to like_report_path(report), method: :put, remote: true do %>
+                      👍
+                      <strong><%= report.get_upvotes.size %></strong>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+              <% else %>
+                <div class="d-flex justify-content-end">
+                  <%= '🔒' %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </div>
