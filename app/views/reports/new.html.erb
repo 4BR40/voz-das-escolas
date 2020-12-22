@@ -50,15 +50,9 @@
             input_html: {class: 'category-selector'},
             legend_tag: false %>
 
-        <p>4. Marque "público" se quiser que seu relato fique visível para sua escola: </p>
-          <fieldset class="form-group boolean optional snippet_archived">
-            <div class="form-check align-center">
-              <input name="snippet[archived]" type="hidden" value="0">
-              <input class="form-check-input boolean optional toggle" type="checkbox" value="1" name="snippet[archived]" id="snippet_archived">
-              <label class="form-check-label boolean optional" for="snippet_archived">Público</label>
-            </div>
-          </fieldset>
-          <br>
+        <p>4. Desmarque a opção abaixo apenas se não quiser que seu relato fique visível para sua escola: </p>
+        <%= f.input :public, label: 'Público', input_html: { class: "toggle" } %>
+        <br>
         <%= f.button :submit, 'Criar relato', class: 'btn btn-info btn-block' %>
       <% end %>
     </div>
